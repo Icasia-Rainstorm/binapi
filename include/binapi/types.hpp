@@ -683,7 +683,7 @@ struct agg_trade_t {
     std::size_t l; // Last trade ID
     std::size_t T; // Trade time
     bool m; // Is the buyer the market maker?
-    bool M; // Ignore
+    //bool M; // Ignore
 
     static agg_trade_t construct(const flatjson::fjson &json);
     friend std::ostream &operator<<(std::ostream &os, const agg_trade_t &o);

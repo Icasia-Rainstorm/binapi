@@ -1,6 +1,6 @@
-CMakeFiles/binapi.dir/src/enums.cpp.o: /home/ubuntu/bianpi/src/enums.cpp \
- /usr/include/stdc-predef.h \
- /home/ubuntu/bianpi/./include/binapi/enums.hpp \
+CMakeFiles/binapi.dir/src/enums.cpp.o: \
+ /home/ubuntu/bianpi_future/src/enums.cpp /usr/include/stdc-predef.h \
+ /home/ubuntu/bianpi_future/./include/binapi/enums.hpp \
  /usr/include/c++/11/cstdint \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -20,6 +20,6 @@ CMakeFiles/binapi.dir/src/enums.cpp.o: /home/ubuntu/bianpi/src/enums.cpp \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /home/ubuntu/bianpi/./include/binapi/fnv1a.hpp \
+ /home/ubuntu/bianpi_future/./include/binapi/fnv1a.hpp \
  /usr/include/c++/11/type_traits /usr/include/c++/11/cassert \
  /usr/include/assert.h

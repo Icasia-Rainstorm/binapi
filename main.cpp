@@ -61,7 +61,7 @@ int main(int argc, char **argv) {
     std::cout.precision(8);
 
     boost::asio::io_context ioctx;
-    binapi::ws::websockets wsp(ioctx, "fstream.binance.com", "9443");
+    binapi::ws::websockets wsp(ioctx, "fstream.binance.com", "443");
 
     binapi::rest::api api(
          ioctx
@@ -123,12 +123,12 @@ int main(int argc, char **argv) {
 
         return EXIT_FAILURE;
     } else {
-        BREAK_IF_ERROR(account);
+        //BREAK_IF_ERROR(account);
         std::cout << "account=" << account.v << std::endl << std::endl;
     }
 
     auto exinfo = api.exchange_info();
-    BREAK_IF_ERROR(exinfo);
+    //BREAK_IF_ERROR(exinfo);
     std::cout << "exinfo=" << exinfo.v << std::endl << std::endl;
 
     auto ping = api.ping();
@@ -183,24 +183,24 @@ int main(int argc, char **argv) {
     BREAK_IF_ERROR(allorders);
     std::cout << "allorders=" << allorders.v << std::endl << std::endl;
 
-    auto mytrades = api.my_trades(testpair, 0, 0, 0, 5);
-    BREAK_IF_ERROR(mytrades);
-    std::cout << "mytrades=" << mytrades.v << std::endl << std::endl;
+    // auto mytrades = api.my_trades(testpair, 0, 0, 0, 5);
+    // BREAK_IF_ERROR(mytrades);
+    // std::cout << "mytrades=" << mytrades.v << std::endl << std::endl;
 
-//    auto neworder = api.new_order(
-//         "ETHUSDT"
-//        ,binapi::e_side::buy
-//        ,binapi::e_type::limit
-//        ,binapi::e_time::GTC
-//        ,binapi::e_trade_resp_type::FULL
-//        ,"0.01"
-//        ,"1660"
-//        ,nullptr
-//        ,nullptr
-//        ,nullptr
-//    );
-//    BREAK_IF_ERROR(neworder);
-//    std::cout << "neworder=" << neworder.v << std::endl << std::endl;
+    // auto neworder = api.new_order(
+    //     testpair,
+    //     binapi::e_side::buy,
+    //     binapi::e_type::limit,
+    //     binapi::e_time::GTC,
+    //     binapi::e_trade_resp_type::FULL,
+    //     "0.001",
+    //     "23000",
+    //     nullptr,
+    //     nullptr,
+    //     nullptr
+    // );
+    // BREAK_IF_ERROR(neworder);
+    // std::cout << "neworder=" << neworder.v << std::endl << std::endl;
 
 //    auto cancelorder = api.cancel_order("ETHUSDT", 12568850324, nullptr, nullptr);
 //    BREAK_IF_ERROR(cancelorder);
@@ -250,14 +250,15 @@ int main(int argc, char **argv) {
             return true;
         }
     );
-    wsp.trade(testpair,
-        [](const char *fl, int ec, std::string errmsg, binapi::ws::trade_t msg) -> bool {
+    wsp.agg_trade(testpair,
+        [](const char *fl, int ec, std::string errmsg, binapi::ws::agg_trade_t msg) -> bool {
             if ( ec ) {
+                //std::cout << "here" << std::endl;
                 std::cout << "subscribe_trade(): fl=" << fl << ", ec=" << ec << ", errmsg: " << errmsg << ", msg: " << msg << std::endl;
                 return false;
             }
 
-            std::cout << "trade: " << msg << std::endl;
+            std::cout << "agg_trade: " << msg << std::endl;
             return true;
         }
     );

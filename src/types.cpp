@@ -1551,7 +1551,7 @@ agg_trade_t agg_trade_t::construct(const flatjson::fjson &json) {
     __BINAPI_GET(l);
     __BINAPI_GET(T);
     __BINAPI_GET(m);
-    __BINAPI_GET(M);
+    //__BINAPI_GET(M);
 
     return res;
 }
@@ -1568,9 +1568,9 @@ std::ostream &operator<<(std::ostream &os, const agg_trade_t &o) {
     << "\"f\":" << o.f << ","
     << "\"l\":" << o.l << ","
     << "\"T\":" << o.T << ","
-    << "\"m\":" << (o.m ? "true" : "false") << ","
-    << "\"M\":" << (o.M ? "true" : "false")
-    << "}";
+    << "\"m\":" << (o.m ? "true" : "false") << "}";
+    //<< "\"M\":" << (o.M ? "true" : "false")
+    //<< "}";
 
     return os;
 }

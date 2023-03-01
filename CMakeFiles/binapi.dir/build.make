@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/bianpi
+CMAKE_SOURCE_DIR = /home/ubuntu/bianpi_future
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/bianpi
+CMAKE_BINARY_DIR = /home/ubuntu/bianpi_future
 
 # Include any dependencies generated for this target.
 include CMakeFiles/binapi.dir/depend.make
@@ -72,128 +72,128 @@ include CMakeFiles/binapi.dir/flags.make
 CMakeFiles/binapi.dir/main.cpp.o: CMakeFiles/binapi.dir/flags.make
 CMakeFiles/binapi.dir/main.cpp.o: main.cpp
 CMakeFiles/binapi.dir/main.cpp.o: CMakeFiles/binapi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/binapi.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/main.cpp.o -MF CMakeFiles/binapi.dir/main.cpp.o.d -o CMakeFiles/binapi.dir/main.cpp.o -c /home/ubuntu/bianpi/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi_future/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/binapi.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/main.cpp.o -MF CMakeFiles/binapi.dir/main.cpp.o.d -o CMakeFiles/binapi.dir/main.cpp.o -c /home/ubuntu/bianpi_future/main.cpp
 
 CMakeFiles/binapi.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/binapi.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi/main.cpp > CMakeFiles/binapi.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi_future/main.cpp > CMakeFiles/binapi.dir/main.cpp.i
 
 CMakeFiles/binapi.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/binapi.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi/main.cpp -o CMakeFiles/binapi.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi_future/main.cpp -o CMakeFiles/binapi.dir/main.cpp.s
 
 CMakeFiles/binapi.dir/src/api.cpp.o: CMakeFiles/binapi.dir/flags.make
 CMakeFiles/binapi.dir/src/api.cpp.o: src/api.cpp
 CMakeFiles/binapi.dir/src/api.cpp.o: CMakeFiles/binapi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/binapi.dir/src/api.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/api.cpp.o -MF CMakeFiles/binapi.dir/src/api.cpp.o.d -o CMakeFiles/binapi.dir/src/api.cpp.o -c /home/ubuntu/bianpi/src/api.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi_future/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/binapi.dir/src/api.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/api.cpp.o -MF CMakeFiles/binapi.dir/src/api.cpp.o.d -o CMakeFiles/binapi.dir/src/api.cpp.o -c /home/ubuntu/bianpi_future/src/api.cpp
 
 CMakeFiles/binapi.dir/src/api.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/binapi.dir/src/api.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi/src/api.cpp > CMakeFiles/binapi.dir/src/api.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi_future/src/api.cpp > CMakeFiles/binapi.dir/src/api.cpp.i
 
 CMakeFiles/binapi.dir/src/api.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/binapi.dir/src/api.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi/src/api.cpp -o CMakeFiles/binapi.dir/src/api.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi_future/src/api.cpp -o CMakeFiles/binapi.dir/src/api.cpp.s
 
 CMakeFiles/binapi.dir/src/enums.cpp.o: CMakeFiles/binapi.dir/flags.make
 CMakeFiles/binapi.dir/src/enums.cpp.o: src/enums.cpp
 CMakeFiles/binapi.dir/src/enums.cpp.o: CMakeFiles/binapi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/binapi.dir/src/enums.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/enums.cpp.o -MF CMakeFiles/binapi.dir/src/enums.cpp.o.d -o CMakeFiles/binapi.dir/src/enums.cpp.o -c /home/ubuntu/bianpi/src/enums.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi_future/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/binapi.dir/src/enums.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/enums.cpp.o -MF CMakeFiles/binapi.dir/src/enums.cpp.o.d -o CMakeFiles/binapi.dir/src/enums.cpp.o -c /home/ubuntu/bianpi_future/src/enums.cpp
 
 CMakeFiles/binapi.dir/src/enums.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/binapi.dir/src/enums.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi/src/enums.cpp > CMakeFiles/binapi.dir/src/enums.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi_future/src/enums.cpp > CMakeFiles/binapi.dir/src/enums.cpp.i
 
 CMakeFiles/binapi.dir/src/enums.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/binapi.dir/src/enums.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi/src/enums.cpp -o CMakeFiles/binapi.dir/src/enums.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi_future/src/enums.cpp -o CMakeFiles/binapi.dir/src/enums.cpp.s
 
 CMakeFiles/binapi.dir/src/errors.cpp.o: CMakeFiles/binapi.dir/flags.make
 CMakeFiles/binapi.dir/src/errors.cpp.o: src/errors.cpp
 CMakeFiles/binapi.dir/src/errors.cpp.o: CMakeFiles/binapi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/binapi.dir/src/errors.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/errors.cpp.o -MF CMakeFiles/binapi.dir/src/errors.cpp.o.d -o CMakeFiles/binapi.dir/src/errors.cpp.o -c /home/ubuntu/bianpi/src/errors.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi_future/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/binapi.dir/src/errors.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/errors.cpp.o -MF CMakeFiles/binapi.dir/src/errors.cpp.o.d -o CMakeFiles/binapi.dir/src/errors.cpp.o -c /home/ubuntu/bianpi_future/src/errors.cpp
 
 CMakeFiles/binapi.dir/src/errors.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/binapi.dir/src/errors.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi/src/errors.cpp > CMakeFiles/binapi.dir/src/errors.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi_future/src/errors.cpp > CMakeFiles/binapi.dir/src/errors.cpp.i
 
 CMakeFiles/binapi.dir/src/errors.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/binapi.dir/src/errors.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi/src/errors.cpp -o CMakeFiles/binapi.dir/src/errors.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi_future/src/errors.cpp -o CMakeFiles/binapi.dir/src/errors.cpp.s
 
 CMakeFiles/binapi.dir/src/pairslist.cpp.o: CMakeFiles/binapi.dir/flags.make
 CMakeFiles/binapi.dir/src/pairslist.cpp.o: src/pairslist.cpp
 CMakeFiles/binapi.dir/src/pairslist.cpp.o: CMakeFiles/binapi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/binapi.dir/src/pairslist.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/pairslist.cpp.o -MF CMakeFiles/binapi.dir/src/pairslist.cpp.o.d -o CMakeFiles/binapi.dir/src/pairslist.cpp.o -c /home/ubuntu/bianpi/src/pairslist.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi_future/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/binapi.dir/src/pairslist.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/pairslist.cpp.o -MF CMakeFiles/binapi.dir/src/pairslist.cpp.o.d -o CMakeFiles/binapi.dir/src/pairslist.cpp.o -c /home/ubuntu/bianpi_future/src/pairslist.cpp
 
 CMakeFiles/binapi.dir/src/pairslist.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/binapi.dir/src/pairslist.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi/src/pairslist.cpp > CMakeFiles/binapi.dir/src/pairslist.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi_future/src/pairslist.cpp > CMakeFiles/binapi.dir/src/pairslist.cpp.i
 
 CMakeFiles/binapi.dir/src/pairslist.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/binapi.dir/src/pairslist.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi/src/pairslist.cpp -o CMakeFiles/binapi.dir/src/pairslist.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi_future/src/pairslist.cpp -o CMakeFiles/binapi.dir/src/pairslist.cpp.s
 
 CMakeFiles/binapi.dir/src/reports.cpp.o: CMakeFiles/binapi.dir/flags.make
 CMakeFiles/binapi.dir/src/reports.cpp.o: src/reports.cpp
 CMakeFiles/binapi.dir/src/reports.cpp.o: CMakeFiles/binapi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/binapi.dir/src/reports.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/reports.cpp.o -MF CMakeFiles/binapi.dir/src/reports.cpp.o.d -o CMakeFiles/binapi.dir/src/reports.cpp.o -c /home/ubuntu/bianpi/src/reports.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi_future/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/binapi.dir/src/reports.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/reports.cpp.o -MF CMakeFiles/binapi.dir/src/reports.cpp.o.d -o CMakeFiles/binapi.dir/src/reports.cpp.o -c /home/ubuntu/bianpi_future/src/reports.cpp
 
 CMakeFiles/binapi.dir/src/reports.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/binapi.dir/src/reports.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi/src/reports.cpp > CMakeFiles/binapi.dir/src/reports.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi_future/src/reports.cpp > CMakeFiles/binapi.dir/src/reports.cpp.i
 
 CMakeFiles/binapi.dir/src/reports.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/binapi.dir/src/reports.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi/src/reports.cpp -o CMakeFiles/binapi.dir/src/reports.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi_future/src/reports.cpp -o CMakeFiles/binapi.dir/src/reports.cpp.s
 
 CMakeFiles/binapi.dir/src/tools.cpp.o: CMakeFiles/binapi.dir/flags.make
 CMakeFiles/binapi.dir/src/tools.cpp.o: src/tools.cpp
 CMakeFiles/binapi.dir/src/tools.cpp.o: CMakeFiles/binapi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/binapi.dir/src/tools.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/tools.cpp.o -MF CMakeFiles/binapi.dir/src/tools.cpp.o.d -o CMakeFiles/binapi.dir/src/tools.cpp.o -c /home/ubuntu/bianpi/src/tools.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi_future/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/binapi.dir/src/tools.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/tools.cpp.o -MF CMakeFiles/binapi.dir/src/tools.cpp.o.d -o CMakeFiles/binapi.dir/src/tools.cpp.o -c /home/ubuntu/bianpi_future/src/tools.cpp
 
 CMakeFiles/binapi.dir/src/tools.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/binapi.dir/src/tools.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi/src/tools.cpp > CMakeFiles/binapi.dir/src/tools.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi_future/src/tools.cpp > CMakeFiles/binapi.dir/src/tools.cpp.i
 
 CMakeFiles/binapi.dir/src/tools.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/binapi.dir/src/tools.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi/src/tools.cpp -o CMakeFiles/binapi.dir/src/tools.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi_future/src/tools.cpp -o CMakeFiles/binapi.dir/src/tools.cpp.s
 
 CMakeFiles/binapi.dir/src/types.cpp.o: CMakeFiles/binapi.dir/flags.make
 CMakeFiles/binapi.dir/src/types.cpp.o: src/types.cpp
 CMakeFiles/binapi.dir/src/types.cpp.o: CMakeFiles/binapi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/binapi.dir/src/types.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/types.cpp.o -MF CMakeFiles/binapi.dir/src/types.cpp.o.d -o CMakeFiles/binapi.dir/src/types.cpp.o -c /home/ubuntu/bianpi/src/types.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi_future/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/binapi.dir/src/types.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/types.cpp.o -MF CMakeFiles/binapi.dir/src/types.cpp.o.d -o CMakeFiles/binapi.dir/src/types.cpp.o -c /home/ubuntu/bianpi_future/src/types.cpp
 
 CMakeFiles/binapi.dir/src/types.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/binapi.dir/src/types.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi/src/types.cpp > CMakeFiles/binapi.dir/src/types.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi_future/src/types.cpp > CMakeFiles/binapi.dir/src/types.cpp.i
 
 CMakeFiles/binapi.dir/src/types.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/binapi.dir/src/types.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi/src/types.cpp -o CMakeFiles/binapi.dir/src/types.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi_future/src/types.cpp -o CMakeFiles/binapi.dir/src/types.cpp.s
 
 CMakeFiles/binapi.dir/src/websocket.cpp.o: CMakeFiles/binapi.dir/flags.make
 CMakeFiles/binapi.dir/src/websocket.cpp.o: src/websocket.cpp
 CMakeFiles/binapi.dir/src/websocket.cpp.o: CMakeFiles/binapi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/binapi.dir/src/websocket.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/websocket.cpp.o -MF CMakeFiles/binapi.dir/src/websocket.cpp.o.d -o CMakeFiles/binapi.dir/src/websocket.cpp.o -c /home/ubuntu/bianpi/src/websocket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/bianpi_future/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/binapi.dir/src/websocket.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/binapi.dir/src/websocket.cpp.o -MF CMakeFiles/binapi.dir/src/websocket.cpp.o.d -o CMakeFiles/binapi.dir/src/websocket.cpp.o -c /home/ubuntu/bianpi_future/src/websocket.cpp
 
 CMakeFiles/binapi.dir/src/websocket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/binapi.dir/src/websocket.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi/src/websocket.cpp > CMakeFiles/binapi.dir/src/websocket.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/bianpi_future/src/websocket.cpp > CMakeFiles/binapi.dir/src/websocket.cpp.i
 
 CMakeFiles/binapi.dir/src/websocket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/binapi.dir/src/websocket.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi/src/websocket.cpp -o CMakeFiles/binapi.dir/src/websocket.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/bianpi_future/src/websocket.cpp -o CMakeFiles/binapi.dir/src/websocket.cpp.s
 
 # Object files for target binapi
 binapi_OBJECTS = \
@@ -221,7 +221,7 @@ binapi: CMakeFiles/binapi.dir/src/types.cpp.o
 binapi: CMakeFiles/binapi.dir/src/websocket.cpp.o
 binapi: CMakeFiles/binapi.dir/build.make
 binapi: CMakeFiles/binapi.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/bianpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable binapi"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/bianpi_future/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable binapi"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/binapi.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -233,6 +233,6 @@ CMakeFiles/binapi.dir/clean:
 .PHONY : CMakeFiles/binapi.dir/clean
 
 CMakeFiles/binapi.dir/depend:
-	cd /home/ubuntu/bianpi && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/bianpi /home/ubuntu/bianpi /home/ubuntu/bianpi /home/ubuntu/bianpi /home/ubuntu/bianpi/CMakeFiles/binapi.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/bianpi_future && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/bianpi_future /home/ubuntu/bianpi_future /home/ubuntu/bianpi_future /home/ubuntu/bianpi_future /home/ubuntu/bianpi_future/CMakeFiles/binapi.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/binapi.dir/depend
 

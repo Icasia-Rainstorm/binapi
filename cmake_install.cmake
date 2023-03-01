@@ -1,4 +1,4 @@
-# Install script for directory: /home/ubuntu/bianpi
+# Install script for directory: /home/ubuntu/bianpi_future
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/ubuntu/bianpi/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ubuntu/bianpi_future/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

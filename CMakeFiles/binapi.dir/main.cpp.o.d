@@ -1,7 +1,7 @@
-CMakeFiles/binapi.dir/main.cpp.o: /home/ubuntu/bianpi/main.cpp \
+CMakeFiles/binapi.dir/main.cpp.o: /home/ubuntu/bianpi_future/main.cpp \
  /usr/include/stdc-predef.h \
- /home/ubuntu/bianpi/./include/binapi/websocket.hpp \
- /home/ubuntu/bianpi/./include/binapi/enums.hpp \
+ /home/ubuntu/bianpi_future/./include/binapi/websocket.hpp \
+ /home/ubuntu/bianpi_future/./include/binapi/enums.hpp \
  /usr/include/c++/11/cstdint \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -116,9 +116,9 @@ CMakeFiles/binapi.dir/main.cpp.o: /home/ubuntu/bianpi/main.cpp \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h /usr/include/c++/11/functional \
  /usr/include/c++/11/bits/std_function.h \
- /home/ubuntu/bianpi/./include/binapi/api.hpp \
- /home/ubuntu/bianpi/./include/binapi/types.hpp \
- /home/ubuntu/bianpi/./include/binapi/double_type.hpp \
+ /home/ubuntu/bianpi_future/./include/binapi/api.hpp \
+ /home/ubuntu/bianpi_future/./include/binapi/types.hpp \
+ /home/ubuntu/bianpi_future/./include/binapi/double_type.hpp \
  /usr/local/include/boost/multiprecision/cpp_dec_float.hpp \
  /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -964,11 +964,11 @@ CMakeFiles/binapi.dir/main.cpp.o: /home/ubuntu/bianpi/main.cpp \
  /usr/include/c++/11/bits/stl_tree.h /usr/include/c++/11/bits/stl_map.h \
  /usr/include/c++/11/bits/stl_multimap.h \
  /usr/include/c++/11/bits/erase_if.h \
- /home/ubuntu/bianpi/./include/binapi/pairslist.hpp \
+ /home/ubuntu/bianpi_future/./include/binapi/pairslist.hpp \
  /usr/include/c++/11/set /usr/include/c++/11/bits/stl_set.h \
  /usr/include/c++/11/bits/stl_multiset.h \
- /home/ubuntu/bianpi/./include/binapi/reports.hpp \
- /home/ubuntu/bianpi/./include/binapi/flatjson.hpp \
+ /home/ubuntu/bianpi_future/./include/binapi/reports.hpp \
+ /home/ubuntu/bianpi_future/./include/binapi/flatjson.hpp \
  /usr/local/include/boost/asio/io_context.hpp \
  /usr/local/include/boost/asio/detail/config.hpp \
  /usr/include/linux/version.h \
@@ -1355,4 +1355,4 @@ CMakeFiles/binapi.dir/main.cpp.o: /home/ubuntu/bianpi/main.cpp \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc \
- /home/ubuntu/bianpi/./include/binapi/errors.hpp
+ /home/ubuntu/bianpi_future/./include/binapi/errors.hpp

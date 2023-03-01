@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DDTF_HEADER_ONLY
 
-CXX_INCLUDES = -I/home/ubuntu/bianpi/./include
+CXX_INCLUDES = -I/home/ubuntu/bianpi_future/./include
 
 CXX_FLAGS =  -Wall -Wextra -fsanitize=address   -UNDEBUG -std=gnu++14
 

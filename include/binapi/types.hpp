@@ -346,7 +346,7 @@ struct trades_t {
         double_type qty;
         std::size_t time;
         bool isBuyerMaker;
-        bool isBestMatch;
+        //bool isBestMatch;
 
         static trade_t construct(const flatjson::fjson &json);
         friend std::ostream &operator<<(std::ostream &os, const trade_t &s);
@@ -368,7 +368,7 @@ struct agg_trades_t {
         std::size_t last_id;
         std::size_t time;
         bool isBuyerMaker;
-        bool isBestMatch;
+        //bool isBestMatch;
 
         static agg_trade_t construct(const flatjson::fjson &json);
         friend std::ostream &operator<<(std::ostream &os, const agg_trade_t &s);
@@ -412,16 +412,16 @@ struct order_info_t {
     double_type price;
     double_type origQty;
     double_type executedQty;
-    double_type cummulativeQuoteQty;
+    //double_type cummulativeQuoteQty;
     std::string status;
     std::string timeInForce;
     std::string type;
     std::string side;
     double_type stopPrice;
-    double_type icebergQty;
+    //double_type icebergQty;
     std::size_t time;
     std::size_t updateTime;
-    bool isWorking;
+    //bool isWorking;
 
     static order_info_t construct(const flatjson::fjson &json);
     friend std::ostream &operator<<(std::ostream &os, const order_info_t &o);
@@ -455,7 +455,7 @@ struct new_order_info_result_t {
     double_type price;
     double_type origQty;
     double_type executedQty;
-    double_type cummulativeQuoteQty;
+    //double_type cummulativeQuoteQty;
     std::string status;
     std::string timeInForce;
     std::string type;
@@ -473,7 +473,7 @@ struct new_order_info_full_t {
     double_type price;
     double_type origQty;
     double_type executedQty;
-    double_type cummulativeQuoteQty;
+    //double_type cummulativeQuoteQty;
     std::string status;
     std::string timeInForce;
     std::string type;
@@ -598,7 +598,7 @@ struct cancel_order_info_t {
     double_type price;
     double_type origQty;
     double_type executedQty;
-    double_type cummulativeQuoteQty;
+    //double_type cummulativeQuoteQty;
     std::string status;
     std::string timeInForce;
     std::string type;
@@ -621,7 +621,7 @@ struct my_trades_info_t {
         std::size_t time;
         bool isBuyer;
         bool isMaker;
-        bool isBestMatch;
+        ///bool isBestMatch;
 
         static my_trade_info_t construct(const flatjson::fjson &json);
         friend std::ostream &operator<<(std::ostream &os, const my_trade_info_t &o);

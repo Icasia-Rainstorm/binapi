@@ -1,0 +1,3 @@
+/home/ubuntu/bianpi/CMakeFiles/binapi.dir
+/home/ubuntu/bianpi/CMakeFiles/edit_cache.dir
+/home/ubuntu/bianpi/CMakeFiles/rebuild_cache.dir

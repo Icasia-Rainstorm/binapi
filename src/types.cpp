@@ -848,7 +848,7 @@ trades_t::trade_t trades_t::trade_t::construct(const flatjson::fjson &json) {
     __BINAPI_GET2(res, qty, it);
     __BINAPI_GET2(res, time, it);
     __BINAPI_GET2(res, isBuyerMaker, it);
-    __BINAPI_GET2(res, isBestMatch, it);
+    //__BINAPI_GET2(res, isBestMatch, it);
 
     return res;
 }
@@ -860,9 +860,9 @@ std::ostream &operator<<(std::ostream &os, const trades_t::trade_t &o) {
     << "\"price\":\"" << o.price << "\","
     << "\"qty\":\"" << o.qty << "\","
     << "\"time\":" << o.time << ","
-    << "\"isBuyerMaker\":" << (o.isBuyerMaker ? "true" : "false") << ","
-    << "\"isBestMatch\":" << (o.isBestMatch ? "true" : "false")
-    << "}";
+    << "\"isBuyerMaker\":" << (o.isBuyerMaker ? "true" : "false") << "}";
+    //<< "\"isBestMatch\":" << (o.isBestMatch ? "true" : "false")
+    //<< "}";
 
     return os;
 }
@@ -879,7 +879,7 @@ trades_t trades_t::construct(const flatjson::fjson &json) {
         __BINAPI_GET2(item, qty, it);
         __BINAPI_GET2(item, time, it);
         __BINAPI_GET2(item, isBuyerMaker, it);
-        __BINAPI_GET2(item, isBestMatch, it);
+        //__BINAPI_GET2(item, isBestMatch, it);
 
         res.trades.push_back(std::move(item));
     }
@@ -916,7 +916,7 @@ agg_trades_t::agg_trade_t agg_trades_t::agg_trade_t::construct(const flatjson::f
     __get_json(res.last_id, "l", it);
     __get_json(res.time, "T", it);
     __get_json(res.isBuyerMaker, "m", it);
-    __get_json(res.isBestMatch, "M", it);
+    //__get_json(res.isBestMatch, "M", it);
 
     return res;
 }
@@ -930,9 +930,9 @@ std::ostream &operator<<(std::ostream &os, const agg_trades_t::agg_trade_t &o) {
     << "\"first_id\":" << o.first_id << ","
     << "\"last_id\":" << o.last_id << ","
     << "\"time\":" << o.time << ","
-    << "\"isBuyerMaker\":" << (o.isBuyerMaker ? "true" : "false") << ","
-    << "\"isBestMatch\":" << (o.isBestMatch ? "true" : "false")
-    << "}";
+    << "\"isBuyerMaker\":" << (o.isBuyerMaker ? "true" : "false") << "}";
+    //<< "\"isBestMatch\":" << (o.isBestMatch ? "true" : "false")
+    //<< "}";
 
     return os;
 }
@@ -953,7 +953,7 @@ agg_trades_t agg_trades_t::construct(const flatjson::fjson &json) {
         __get_json(item.last_id, "l", it);
         __get_json(item.time, "T", it);
         __get_json(item.isBuyerMaker, "m", it);
-        __get_json(item.isBestMatch, "M", it);
+        //__get_json(item.isBestMatch, "M", it);
 
         res.trades.push_back(std::move(item));
     }
@@ -1050,16 +1050,16 @@ order_info_t order_info_t::construct(const flatjson::fjson &json) {
     __BINAPI_GET(price);
     __BINAPI_GET(origQty);
     __BINAPI_GET(executedQty);
-    __BINAPI_GET(cummulativeQuoteQty);
+    //__BINAPI_GET(cummulativeQuoteQty);
     __BINAPI_GET(status);
     __BINAPI_GET(timeInForce);
     __BINAPI_GET(type);
     __BINAPI_GET(side);
     __BINAPI_GET(stopPrice);
-    __BINAPI_GET(icebergQty);
+    //__BINAPI_GET(icebergQty);
     __BINAPI_GET(time);
     __BINAPI_GET(updateTime);
-    __BINAPI_GET(isWorking);
+    //__BINAPI_GET(isWorking);
 
     return res;
 }
@@ -1073,17 +1073,17 @@ std::ostream &operator<<(std::ostream &os, const order_info_t &o) {
     << "\"price\":\"" << o.price << "\","
     << "\"origQty\":\"" << o.origQty << "\","
     << "\"executedQty\":\"" << o.executedQty << "\","
-    << "\"cummulativeQuoteQty\":\"" << o.cummulativeQuoteQty << "\","
+    //<< "\"cummulativeQuoteQty\":\"" << o.cummulativeQuoteQty << "\","
     << "\"status\":\"" << o.status << "\","
     << "\"timeInForce\":\"" << o.timeInForce << "\","
     << "\"type\":\"" << o.type << "\","
     << "\"side\":\"" << o.side << "\","
     << "\"stopPrice\":\"" << o.stopPrice << "\","
-    << "\"icebergQty\":\"" << o.icebergQty << "\","
+    //<< "\"icebergQty\":\"" << o.icebergQty << "\","
     << "\"time\":" << o.time << ","
-    << "\"updateTime\":" << o.updateTime << ","
-    << "\"isWorking\":" << (o.isWorking ? "true" : "false")
-    << "}";
+    << "\"updateTime\":" << o.updateTime << "}";
+    //<< "\"isWorking\":" << (o.isWorking ? "true" : "false")
+    //<< "}";
 
     return os;
 }
@@ -1103,16 +1103,16 @@ orders_info_t orders_info_t::construct(const flatjson::fjson &json) {
         __BINAPI_GET2(item, price, it);
         __BINAPI_GET2(item, origQty, it);
         __BINAPI_GET2(item, executedQty, it);
-        __BINAPI_GET2(item, cummulativeQuoteQty, it);
+        //__BINAPI_GET2(item, cummulativeQuoteQty, it);
         __BINAPI_GET2(item, status, it);
         __BINAPI_GET2(item, timeInForce, it);
         __BINAPI_GET2(item, type, it);
         __BINAPI_GET2(item, side, it);
         __BINAPI_GET2(item, stopPrice, it);
-        __BINAPI_GET2(item, icebergQty, it);
+        //__BINAPI_GET2(item, icebergQty, it);
         __BINAPI_GET2(item, time, it);
         __BINAPI_GET2(item, updateTime, it);
-        __BINAPI_GET2(item, isWorking, it);
+        //__BINAPI_GET2(item, isWorking, it);
 
         res.orders[item.symbol].push_back(std::move(item));
     }
@@ -1173,7 +1173,7 @@ new_order_info_result_t new_order_info_result_t::construct(const flatjson::fjson
     __BINAPI_GET(price);
     __BINAPI_GET(origQty);
     __BINAPI_GET(executedQty);
-    __BINAPI_GET(cummulativeQuoteQty);
+    //__BINAPI_GET(cummulativeQuoteQty);
     __BINAPI_GET(status);
     __BINAPI_GET(timeInForce);
     __BINAPI_GET(type);
@@ -1191,7 +1191,7 @@ std::ostream &operator<<(std::ostream &os, const new_order_info_result_t &o) {
     << "\"price\":\"" << o.price << "\","
     << "\"origQty\":\"" << o.origQty << "\","
     << "\"executedQty\":\"" << o.executedQty << "\","
-    << "\"cummulativeQuoteQty\":\"" << o.cummulativeQuoteQty << "\","
+    //<< "\"cummulativeQuoteQty\":\"" << o.cummulativeQuoteQty << "\","
     << "\"status\":\"" << o.status << "\","
     << "\"timeInForce\":\"" << o.timeInForce << "\","
     << "\"type\":\"" << o.type << "\","
@@ -1248,7 +1248,7 @@ new_order_info_full_t new_order_info_full_t::construct(const flatjson::fjson &js
     __BINAPI_GET(price);
     __BINAPI_GET(origQty);
     __BINAPI_GET(executedQty);
-    __BINAPI_GET(cummulativeQuoteQty);
+    //__BINAPI_GET(cummulativeQuoteQty);
     __BINAPI_GET(status);
     __BINAPI_GET(timeInForce);
     __BINAPI_GET(type);
@@ -1277,7 +1277,7 @@ std::ostream &operator<<(std::ostream &os, const new_order_info_full_t &o) {
     << "\"price\":\"" << o.price << "\","
     << "\"origQty\":\"" << o.origQty << "\","
     << "\"executedQty\":\"" << o.executedQty << "\","
-    << "\"cummulativeQuoteQty\":\"" << o.cummulativeQuoteQty << "\","
+    //<< "\"cummulativeQuoteQty\":\"" << o.cummulativeQuoteQty << "\","
     << "\"status\":\"" << o.status << "\","
     << "\"timeInForce\":\"" << o.timeInForce << "\","
     << "\"type\":\"" << o.type << "\","
@@ -1372,7 +1372,7 @@ cancel_order_info_t cancel_order_info_t::construct(const flatjson::fjson &json) 
     __BINAPI_GET(price);
     __BINAPI_GET(origQty);
     __BINAPI_GET(executedQty);
-    __BINAPI_GET(cummulativeQuoteQty);
+    //__BINAPI_GET(cummulativeQuoteQty);
     __BINAPI_GET(status);
     __BINAPI_GET(timeInForce);
     __BINAPI_GET(type);
@@ -1391,7 +1391,7 @@ std::ostream &operator<<(std::ostream &os, const cancel_order_info_t &o) {
     << "\"price\":\"" << o.price << "\","
     << "\"origQty\":\"" << o.origQty << "\","
     << "\"executedQty\":\"" << o.executedQty << "\","
-    << "\"cummulativeQuoteQty\":\"" << o.cummulativeQuoteQty << "\","
+    //<< "\"cummulativeQuoteQty\":\"" << o.cummulativeQuoteQty << "\","
     << "\"status\":\"" << o.status << "\","
     << "\"timeInForce\":\"" << o.timeInForce << "\","
     << "\"type\":\"" << o.type << "\","
@@ -1415,7 +1415,7 @@ my_trades_info_t::my_trade_info_t my_trades_info_t::my_trade_info_t::construct(c
     __BINAPI_GET(time);
     __BINAPI_GET(isBuyer);
     __BINAPI_GET(isMaker);
-    __BINAPI_GET(isBestMatch);
+    //__BINAPI_GET(isBestMatch);
 
     return res;
 }
@@ -1432,9 +1432,9 @@ std::ostream &operator<<(std::ostream &os, const my_trades_info_t::my_trade_info
     << "\"commissionAsset\":\"" << o.commissionAsset << "\","
     << "\"time\":" << o.time << ","
     << "\"isBuyer\":" << (o.isBuyer ? "true" : "false") << ","
-    << "\"isMaker\":" << (o.isMaker ? "true" : "false") << ","
-    << "\"isBestMatch\":" << (o.isBestMatch ? "true" : "false")
-    << "}";
+    << "\"isMaker\":" << (o.isMaker ? "true" : "false") << "}";
+    //<< "\"isBestMatch\":" << (o.isBestMatch ? "true" : "false")
+    //<< "}";
 
     return os;
 }

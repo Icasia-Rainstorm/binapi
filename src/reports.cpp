@@ -194,9 +194,9 @@ pair_trades calc_pair_trades_info(const std::vector<cycle_pair> &trades) {
 
     for ( const auto &it: trades ) {
         res.total_buy_base += it.buy.origQty;
-        res.total_buy_quoted += it.buy.cummulativeQuoteQty;
+        //res.total_buy_quoted += it.buy.cummulativeQuoteQty;
         res.total_sell_base += it.sell.origQty;
-        res.total_sell_quoted += it.sell.cummulativeQuoteQty;
+        //res.total_sell_quoted += it.sell.cummulativeQuoteQty;
     }
 
     return res;

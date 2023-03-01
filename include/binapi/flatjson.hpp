@@ -23,6 +23,7 @@
 #include <cstdint>
 #include <cstdio>
 #include <cstring>
+#include <iostream>
 
 /*************************************************************************************************/
 
@@ -1448,7 +1449,8 @@ public:
     >
     fjson at(ConstCharPtr key) const { return at(key, std::strlen(key)); }
     fjson at(const char *key, std::size_t len) const {
-        auto res = find(key, len);
+        auto res = find(key, len);        
+        //std::cout << key << res.first << res.second << std::endl;
         if ( res.first ) {
             return {m_storage, res.first, res.second};
         }

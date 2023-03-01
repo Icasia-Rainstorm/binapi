@@ -61,18 +61,18 @@ int main(int argc, char **argv) {
     std::cout.precision(8);
 
     boost::asio::io_context ioctx;
-    binapi::ws::websockets wsp(ioctx, "stream.binance.com", "9443");
+    binapi::ws::websockets wsp(ioctx, "fstream.binance.com", "9443");
 
     binapi::rest::api api(
          ioctx
-        ,"api.binance.com"
+        ,"fapi.binance.com"
         ,"443"
         ,pk
         ,sk
         ,10000
     );
 
-    static const char *testpair = "ETHUSDT";
+    static const char *testpair = "BTCUSDT";
 
     /** */
     {
@@ -107,7 +107,7 @@ int main(int argc, char **argv) {
 
         std::cout << std::endl;
         std::cout << "******************* OPEN ORDERS REPORT ******************************" << std::endl;
-        binapi::make_open_orders_report(std::cout, api, exinfo, {});
+//        binapi::make_open_orders_report(std::cout, api, exinfo, {});
 
         std::cout << std::endl;
     }

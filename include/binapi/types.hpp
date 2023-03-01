@@ -593,7 +593,7 @@ struct new_order_resp_type
 struct cancel_order_info_t {
     std::string symbol;
     std::size_t orderId;
-    std::string origClientOrderId;
+    //std::string origClientOrderId;
     std::string clientOrderId;
     double_type price;
     double_type origQty;

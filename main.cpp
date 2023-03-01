@@ -202,7 +202,7 @@ int main(int argc, char **argv) {
     // BREAK_IF_ERROR(neworder);
     // std::cout << "neworder=" << neworder.v << std::endl << std::endl;
 
-//    auto cancelorder = api.cancel_order("ETHUSDT", 12568850324, nullptr, nullptr);
+//    auto cancelorder = api.cancel_order(testpair, 124199714992, nullptr, nullptr);
 //    BREAK_IF_ERROR(cancelorder);
 //    std::cout << "cancelorder=" << cancelorder.v << std::endl << std::endl;
 

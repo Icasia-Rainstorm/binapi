@@ -1367,7 +1367,7 @@ cancel_order_info_t cancel_order_info_t::construct(const flatjson::fjson &json) 
     cancel_order_info_t res{};
     __BINAPI_GET(symbol);
     __BINAPI_GET(orderId);
-    __BINAPI_GET(origClientOrderId);
+    //__BINAPI_GET(origClientOrderId);
     __BINAPI_GET(clientOrderId);
     __BINAPI_GET(price);
     __BINAPI_GET(origQty);
@@ -1386,7 +1386,7 @@ std::ostream &operator<<(std::ostream &os, const cancel_order_info_t &o) {
     << "{"
     << "\"symbol\":\"" << o.symbol << "\","
     << "\"orderId\":" << o.orderId << ","
-    << "\"origClientOrderId\":\"" << o.origClientOrderId << "\","
+    //<< "\"origClientOrderId\":\"" << o.origClientOrderId << "\","
     << "\"clientOrderId\":\"" << o.clientOrderId << "\","
     << "\"price\":\"" << o.price << "\","
     << "\"origQty\":\"" << o.origQty << "\","

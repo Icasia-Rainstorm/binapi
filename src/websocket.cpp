@@ -271,7 +271,7 @@ struct websockets::impl {
     websockets::handle start_channel(const char *pair, const char *channel, F cb) {
         using args_tuple = typename boost::callable_traits::args<F>::type;
         using message_type = typename std::tuple_element<3, args_tuple>::type;
-        std::cout << channel << std::endl;
+        //std::cout << channel << std::endl;
         static const auto deleter = [this](websocket *ws) {
             auto it = m_set.find(ws);
             if ( it != m_set.end() ) {

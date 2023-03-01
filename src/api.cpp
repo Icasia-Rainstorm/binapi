@@ -1013,7 +1013,7 @@ api::result<my_trades_info_t> api::my_trades(
         ,{"limit", limit}
     };
 
-    return pimpl->post(true, "/fapi/v1/myTrades", boost::beast::http::verb::get, map, std::move(cb));
+    return pimpl->post(true, "/fapi/v1/userTrades", boost::beast::http::verb::get, map, std::move(cb));
 }
 
 /*************************************************************************************************/

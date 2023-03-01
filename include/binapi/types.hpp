@@ -619,8 +619,9 @@ struct my_trades_info_t {
         double_type commission;
         std::string commissionAsset;
         std::size_t time;
-        bool isBuyer;
-        bool isMaker;
+        bool buyer;
+        //bool isBuyer;
+        //bool isMaker;
         ///bool isBestMatch;
 
         static my_trade_info_t construct(const flatjson::fjson &json);

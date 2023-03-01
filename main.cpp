@@ -183,9 +183,9 @@ int main(int argc, char **argv) {
     BREAK_IF_ERROR(allorders);
     std::cout << "allorders=" << allorders.v << std::endl << std::endl;
 
-    // auto mytrades = api.my_trades(testpair, 0, 0, 0, 5);
-    // BREAK_IF_ERROR(mytrades);
-    // std::cout << "mytrades=" << mytrades.v << std::endl << std::endl;
+    auto mytrades = api.my_trades(testpair, 0, 0, 0, 5);
+    BREAK_IF_ERROR(mytrades);
+    std::cout << "mytrades=" << mytrades.v << std::endl << std::endl;
 
     // auto neworder = api.new_order(
     //     testpair,
@@ -254,7 +254,7 @@ int main(int argc, char **argv) {
         [](const char *fl, int ec, std::string errmsg, binapi::ws::agg_trade_t msg) -> bool {
             if ( ec ) {
                 //std::cout << "here" << std::endl;
-                std::cout << "subscribe_trade(): fl=" << fl << ", ec=" << ec << ", errmsg: " << errmsg << ", msg: " << msg << std::endl;
+                std::cout << "subscribe_agg_trade(): fl=" << fl << ", ec=" << ec << ", errmsg: " << errmsg << ", msg: " << msg << std::endl;
                 return false;
             }
 

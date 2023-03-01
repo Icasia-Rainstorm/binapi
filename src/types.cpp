@@ -1413,8 +1413,9 @@ my_trades_info_t::my_trade_info_t my_trades_info_t::my_trade_info_t::construct(c
     __BINAPI_GET(commission);
     __BINAPI_GET(commissionAsset);
     __BINAPI_GET(time);
-    __BINAPI_GET(isBuyer);
-    __BINAPI_GET(isMaker);
+    __BINAPI_GET(buyer);
+    //__BINAPI_GET(isBuyer);
+    //__BINAPI_GET(isMaker);
     //__BINAPI_GET(isBestMatch);
 
     return res;
@@ -1431,8 +1432,9 @@ std::ostream &operator<<(std::ostream &os, const my_trades_info_t::my_trade_info
     << "\"commission\":\"" << o.commission << "\","
     << "\"commissionAsset\":\"" << o.commissionAsset << "\","
     << "\"time\":" << o.time << ","
-    << "\"isBuyer\":" << (o.isBuyer ? "true" : "false") << ","
-    << "\"isMaker\":" << (o.isMaker ? "true" : "false") << "}";
+    << "\"buyer\":" << (o.buyer ? "true" : "false") << "}";
+    //<< "\"isBuyer\":" << (o.isBuyer ? "true" : "false") << ","
+    //<< "\"isMaker\":" << (o.isMaker ? "true" : "false") << "}";
     //<< "\"isBestMatch\":" << (o.isBestMatch ? "true" : "false")
     //<< "}";
 

@@ -109,7 +109,7 @@ void remove_all_buy_trades(trade_info_container_t &trades) {
     trade_info_container_t tmp;
 
     for ( auto &it: trades ) {
-        if ( !it.isBuyer ) {
+        if ( !it.buyer ) {
             tmp.push_back(std::move(it));
         }
     }

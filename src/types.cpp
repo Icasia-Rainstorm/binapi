@@ -1146,7 +1146,7 @@ new_order_info_ack_t new_order_info_ack_t::construct(const flatjson::fjson &json
     __BINAPI_GET(symbol);
     __BINAPI_GET(orderId);
     __BINAPI_GET(clientOrderId);
-    __BINAPI_GET(transactTime);
+    __BINAPI_GET(updateTime);
 
     return res;
 }
@@ -1156,7 +1156,7 @@ std::ostream &operator<<(std::ostream &os, const new_order_info_ack_t &o) {
     << "\"symbol\":\"" << o.symbol << "\","
     << "\"orderId\":" << o.orderId << ","
     << "\"clientOrderId\":\"" << o.clientOrderId << "\","
-    << "\"transactTime\":" << o.transactTime
+    << "\"updateTime\":" << o.updateTime
     << "}";
 
     return os;
@@ -1169,7 +1169,7 @@ new_order_info_result_t new_order_info_result_t::construct(const flatjson::fjson
     __BINAPI_GET(symbol);
     __BINAPI_GET(orderId);
     __BINAPI_GET(clientOrderId);
-    __BINAPI_GET(transactTime);
+    __BINAPI_GET(updateTime);
     __BINAPI_GET(price);
     __BINAPI_GET(origQty);
     __BINAPI_GET(executedQty);
@@ -1187,7 +1187,7 @@ std::ostream &operator<<(std::ostream &os, const new_order_info_result_t &o) {
     << "\"symbol\":\"" << o.symbol << "\","
     << "\"orderId\":" << o.orderId << ","
     << "\"clientOrderId\":\"" << o.clientOrderId << "\","
-    << "\"transactTime\":" << o.transactTime << ","
+    << "\"updateTime\":" << o.updateTime << ","
     << "\"price\":\"" << o.price << "\","
     << "\"origQty\":\"" << o.origQty << "\","
     << "\"executedQty\":\"" << o.executedQty << "\","
@@ -1244,7 +1244,7 @@ new_order_info_full_t new_order_info_full_t::construct(const flatjson::fjson &js
     __BINAPI_GET(symbol);
     __BINAPI_GET(orderId);
     __BINAPI_GET(clientOrderId);
-    __BINAPI_GET(transactTime);
+    __BINAPI_GET(updateTime);
     __BINAPI_GET(price);
     __BINAPI_GET(origQty);
     __BINAPI_GET(executedQty);
@@ -1273,7 +1273,7 @@ std::ostream &operator<<(std::ostream &os, const new_order_info_full_t &o) {
     << "\"symbol\":\"" << o.symbol << "\","
     << "\"orderId\":" << o.orderId << ","
     << "\"clientOrderId\":\"" << o.clientOrderId << "\","
-    << "\"transactTime\":" << o.transactTime << ","
+    << "\"updateTime\":" << o.updateTime << ","
     << "\"price\":\"" << o.price << "\","
     << "\"origQty\":\"" << o.origQty << "\","
     << "\"executedQty\":\"" << o.executedQty << "\","

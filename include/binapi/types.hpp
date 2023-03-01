@@ -441,7 +441,7 @@ struct new_order_info_ack_t {
     std::string symbol;
     std::size_t orderId;
     std::string clientOrderId;
-    std::size_t transactTime;
+    std::size_t updateTime;
 
     static new_order_info_ack_t construct(const flatjson::fjson &json);
     friend std::ostream &operator<<(std::ostream &os, const new_order_info_ack_t &o);
@@ -451,7 +451,7 @@ struct new_order_info_result_t {
     std::string symbol;
     std::size_t orderId;
     std::string clientOrderId;
-    std::size_t transactTime;
+    std::size_t updateTime;
     double_type price;
     double_type origQty;
     double_type executedQty;
@@ -469,7 +469,7 @@ struct new_order_info_full_t {
     std::string symbol;
     std::size_t orderId;
     std::string clientOrderId;
-    std::size_t transactTime;
+    std::size_t updateTime;
     double_type price;
     double_type origQty;
     double_type executedQty;

@@ -49,59 +49,59 @@ using order_info_container_t = std::vector<rest::order_info_t>;
 
 /*************************************************************************************************/
 
-std::vector<std::string> get_symbols_of_nonempty_balances(const binapi::rest::account_info_t &accinfo) {
-    std::vector<std::string> res;
+// std::vector<std::string> get_symbols_of_nonempty_balances(const binapi::rest::account_info_t &accinfo) {
+//     std::vector<std::string> res;
 
-    for ( const auto &it: accinfo.balances ) {
-        if ( it.second.free > 0 || it.second.locked > 0 ) {
-            res.push_back(it.first);
-        }
-    }
+//     for ( const auto &it: accinfo.balances ) {
+//         if ( it.second.free > 0 || it.second.locked > 0 ) {
+//             res.push_back(it.first);
+//         }
+//     }
 
-    return res;
-}
+//     return res;
+// }
 
 /*************************************************************************************************/
 
-std::vector<std::string> get_pairs_for_pairs(
-     const rest::account_info_t &accinfo
-    ,const rest::exchange_info_t &exinfo
-    ,const std::vector<std::string> &pairs)
-{
-    std::vector<std::string> mpairs;
-    if ( pairs.empty() ) {
-        std::vector<std::string> symbols = get_symbols_of_nonempty_balances(accinfo);
-        for ( const auto &it: symbols ) {
-            std::string filter = "*";
-            filter += it;
-            auto tmp0 = process_pairs(filter, "", exinfo);
+// std::vector<std::string> get_pairs_for_pairs(
+//      const rest::account_info_t &accinfo
+//     ,const rest::exchange_info_t &exinfo
+//     ,const std::vector<std::string> &pairs)
+// {
+//     std::vector<std::string> mpairs;
+//     if ( pairs.empty() ) {
+//         std::vector<std::string> symbols = get_symbols_of_nonempty_balances(accinfo);
+//         for ( const auto &it: symbols ) {
+//             std::string filter = "*";
+//             filter += it;
+//             auto tmp0 = process_pairs(filter, "", exinfo);
 
-            filter = it;
-            filter += "*";
-            auto tmp1 = process_pairs(filter, "", exinfo);
+//             filter = it;
+//             filter += "*";
+//             auto tmp1 = process_pairs(filter, "", exinfo);
 
-            mpairs.insert(mpairs.end(), tmp0.begin(), tmp0.end());
-            mpairs.insert(mpairs.end(), tmp1.begin(), tmp1.end());
-        }
-    } else {
-        for ( const auto &it: pairs ) {
-            auto tmp = process_pairs(it, "", exinfo);
-            mpairs.insert(mpairs.end(), tmp.begin(), tmp.end());
-        }
-    }
+//             mpairs.insert(mpairs.end(), tmp0.begin(), tmp0.end());
+//             mpairs.insert(mpairs.end(), tmp1.begin(), tmp1.end());
+//         }
+//     } else {
+//         for ( const auto &it: pairs ) {
+//             auto tmp = process_pairs(it, "", exinfo);
+//             mpairs.insert(mpairs.end(), tmp.begin(), tmp.end());
+//         }
+//     }
 
-    std::sort(std::begin(mpairs), std::end(mpairs),
-        [](std::string l, std::string r) {
-            std::reverse(l.begin(), l.end());
-            std::reverse(r.begin(), r.end());
+//     std::sort(std::begin(mpairs), std::end(mpairs),
+//         [](std::string l, std::string r) {
+//             std::reverse(l.begin(), l.end());
+//             std::reverse(r.begin(), r.end());
 
-            return l < r;
-        }
-    );
-    mpairs.erase(std::unique(std::begin(mpairs), std::end(mpairs)), std::end(mpairs));
+//             return l < r;
+//         }
+//     );
+//     mpairs.erase(std::unique(std::begin(mpairs), std::end(mpairs)), std::end(mpairs));
 
-    return mpairs;
-}
+//     return mpairs;
+// }
 
 /*************************************************************************************************/
 
@@ -204,153 +204,153 @@ pair_trades calc_pair_trades_info(const std::vector<cycle_pair> &trades) {
 
 /*************************************************************************************************/
 
-void make_trades_report(
-     std::ostream &os
-    ,rest::api &api
-    ,const rest::account_info_t &accinfo
-    ,const rest::exchange_info_t &exinfo
-    ,const std::vector<std::string> &pairs
-    ,const std::function<void(const rest::order_info_t &)> &tick
-    ,const std::uint64_t start_time
-    ,const std::string &start_time_str)
-{
-    // TODO: comment out
-    //binapi::io_state_saver saver(std::cout, 8, fmtflags);
+// void make_trades_report(
+//      std::ostream &os
+//     ,rest::api &api
+//     ,const rest::account_info_t &accinfo
+//     ,const rest::exchange_info_t &exinfo
+//     ,const std::vector<std::string> &pairs
+//     ,const std::function<void(const rest::order_info_t &)> &tick
+//     ,const std::uint64_t start_time
+//     ,const std::string &start_time_str)
+// {
+//     // TODO: comment out
+//     //binapi::io_state_saver saver(std::cout, 8, fmtflags);
 
-    const auto mtime_from = start_time > 0
-        ? start_time
-        : !start_time_str.empty()
-            ? mstime_from_str(start_time_str)
-            : 0
-    ;
+//     const auto mtime_from = start_time > 0
+//         ? start_time
+//         : !start_time_str.empty()
+//             ? mstime_from_str(start_time_str)
+//             : 0
+//     ;
 
-    auto prices = api.prices();
-    assert(prices);
+//     auto prices = api.prices();
+//     assert(prices);
 
-    std::map<std::string, pair_trades> buy_sell_pairs;
-    auto mpairs = get_pairs_for_pairs(accinfo, exinfo, pairs);
-    std::sort(mpairs.begin(), mpairs.end());
-    for ( const auto &pair: mpairs ) {
-        auto r_trades = api.my_trades(pair, mtime_from, 0, 0, 1000);
-        assert(r_trades);
+//     std::map<std::string, pair_trades> buy_sell_pairs;
+//     auto mpairs = get_pairs_for_pairs(accinfo, exinfo, pairs);
+//     std::sort(mpairs.begin(), mpairs.end());
+//     for ( const auto &pair: mpairs ) {
+//         auto r_trades = api.my_trades(pair, mtime_from, 0, 0, 1000);
+//         assert(r_trades);
 
-        if ( r_trades.v.trades.empty() ) { continue; }
+//         if ( r_trades.v.trades.empty() ) { continue; }
 
-        trade_info_container_t mytrades = std::move(r_trades.v.trades);
+//         trade_info_container_t mytrades = std::move(r_trades.v.trades);
 
-        // сортирую по времени.
-        std::sort(mytrades.begin(), mytrades.end(), [](const auto &l ,const auto &r){ return l.time < r.time; });
+//         // сортирую по времени.
+//         std::sort(mytrades.begin(), mytrades.end(), [](const auto &l ,const auto &r){ return l.time < r.time; });
 
-        constexpr auto flags = dtf::flags::dd_mm_yyyy|dtf::flags::sep1|dtf::flags::secs;
-        std::cout
-        << (boost::format("%-10s: ") % pair)
-        << "first=" << dtf::timestamp_to_dt_str(mytrades.front().time*1000000ull, flags)
-        << ", last=" << dtf::timestamp_to_dt_str(mytrades.back().time*1000000ull, flags) << std::endl;
+//         constexpr auto flags = dtf::flags::dd_mm_yyyy|dtf::flags::sep1|dtf::flags::secs;
+//         std::cout
+//         << (boost::format("%-10s: ") % pair)
+//         << "first=" << dtf::timestamp_to_dt_str(mytrades.front().time*1000000ull, flags)
+//         << ", last=" << dtf::timestamp_to_dt_str(mytrades.back().time*1000000ull, flags) << std::endl;
 
-        // оставляем только SELL ордера
-        remove_all_buy_trades(mytrades);
+//         // оставляем только SELL ордера
+//         remove_all_buy_trades(mytrades);
 
-        // получаем пары(BUY-SELL)
-        auto full_cycle_trades = get_full_cycle_trades(api, mytrades, tick);
-        if ( full_cycle_trades.empty() ) { continue; }
+//         // получаем пары(BUY-SELL)
+//         auto full_cycle_trades = get_full_cycle_trades(api, mytrades, tick);
+//         if ( full_cycle_trades.empty() ) { continue; }
 
-        // считаем сколько купили продали на этой паре
-        auto trades_info = calc_pair_trades_info(full_cycle_trades);
-        buy_sell_pairs[pair] = std::move(trades_info);
-    }
+//         // считаем сколько купили продали на этой паре
+//         auto trades_info = calc_pair_trades_info(full_cycle_trades);
+//         buy_sell_pairs[pair] = std::move(trades_info);
+//     }
 
-    struct by_pair_profit {
-        double_type total_buy;
-        double_type total_sell;
-        double_type profit;
-        std::size_t cycles;
-    };
+//     struct by_pair_profit {
+//         double_type total_buy;
+//         double_type total_sell;
+//         double_type profit;
+//         std::size_t cycles;
+//     };
 
-    static const auto summ_cycles = [](const auto &cont) {
-        std::size_t total_cycles{};
-        for ( const auto &it: cont ) {
-            total_cycles += it.second.cycles;
-        }
+//     static const auto summ_cycles = [](const auto &cont) {
+//         std::size_t total_cycles{};
+//         for ( const auto &it: cont ) {
+//             total_cycles += it.second.cycles;
+//         }
 
-        return total_cycles;
-    };
+//         return total_cycles;
+//     };
 
-    std::map<std::string, by_pair_profit> total_profit;
-    for ( const auto &it: buy_sell_pairs ) {
-        // игнорируем те, что по нулям
-        if ( it.second.total_buy_base == 0 ) { continue; }
+//     std::map<std::string, by_pair_profit> total_profit;
+//     for ( const auto &it: buy_sell_pairs ) {
+//         // игнорируем те, что по нулям
+//         if ( it.second.total_buy_base == 0 ) { continue; }
 
-        const auto &syminfo = exinfo.get_by_symbol(it.first);
+//         const auto &syminfo = exinfo.get_by_symbol(it.first);
 
-        // добавляем к магазину.
-        // т.е. если мы торговали в USDT магазине несколькими базовыми криптами -
-        // тогда профит у нас все равно в USDT, - суммируем его к USDT.
-        auto &market = total_profit[syminfo.quoteAsset];
-        market.total_buy += it.second.total_buy_quoted;
-        market.total_sell += it.second.total_sell_quoted;
-        // считаем профит, от суммы продажи вычитаем сумму покупки
-        auto diff = it.second.total_sell_quoted - it.second.total_buy_quoted;
-        market.profit += diff;
-        market.cycles += it.second.cycles;
+//         // добавляем к магазину.
+//         // т.е. если мы торговали в USDT магазине несколькими базовыми криптами -
+//         // тогда профит у нас все равно в USDT, - суммируем его к USDT.
+//         auto &market = total_profit[syminfo.quoteAsset];
+//         market.total_buy += it.second.total_buy_quoted;
+//         market.total_sell += it.second.total_sell_quoted;
+//         // считаем профит, от суммы продажи вычитаем сумму покупки
+//         auto diff = it.second.total_sell_quoted - it.second.total_buy_quoted;
+//         market.profit += diff;
+//         market.cycles += it.second.cycles;
 
-        //std::cout << syminfo.quoteAsset << " " << diff << std::endl;
-        os << (boost::format("%-10s: %11s") % it.first % diff.str(8, iofmt)) << " " << syminfo.quoteAsset;
+//         //std::cout << syminfo.quoteAsset << " " << diff << std::endl;
+//         os << (boost::format("%-10s: %11s") % it.first % diff.str(8, iofmt)) << " " << syminfo.quoteAsset;
 
-        // следующий код нужен для того, чтоб в случае если у нас котируемая
-        // валюта не является USDT - отобразить профит в пересчете к USDT.
-        std::string pair = syminfo.quoteAsset;
-        pair += "USDT";
-        bool is_valid_pair = syminfo.quoteAsset == "USDT" ? false : exinfo.is_valid_symbol(pair);
-        if ( is_valid_pair ) {
-            const auto &price = prices.v.get_by_symbol(pair);
-            auto total = diff * price.price;
-            os << " (" << total << " USDT)";
-        }
+//         // следующий код нужен для того, чтоб в случае если у нас котируемая
+//         // валюта не является USDT - отобразить профит в пересчете к USDT.
+//         std::string pair = syminfo.quoteAsset;
+//         pair += "USDT";
+//         bool is_valid_pair = syminfo.quoteAsset == "USDT" ? false : exinfo.is_valid_symbol(pair);
+//         if ( is_valid_pair ) {
+//             const auto &price = prices.v.get_by_symbol(pair);
+//             auto total = diff * price.price;
+//             os << " (" << total << " USDT)";
+//         }
 
-        os
-        << " (" << it.second.cycles << " trades)"
-        << std::endl;
-    }
+//         os
+//         << " (" << it.second.cycles << " trades)"
+//         << std::endl;
+//     }
 
-    if ( !total_profit.empty() ) {
-        os
-        << std::endl
-        << "PROFIT RESUME:" << std::endl;
+//     if ( !total_profit.empty() ) {
+//         os
+//         << std::endl
+//         << "PROFIT RESUME:" << std::endl;
 
-        for ( const auto &it: total_profit ) {
-            os
-            << "  " << it.second.profit << " " << it.first
-            << " (BUY: " << it.second.total_buy << ", SELL: " << it.second.total_sell << ", TRADES: " << summ_cycles(total_profit) << ")";
+//         for ( const auto &it: total_profit ) {
+//             os
+//             << "  " << it.second.profit << " " << it.first
+//             << " (BUY: " << it.second.total_buy << ", SELL: " << it.second.total_sell << ", TRADES: " << summ_cycles(total_profit) << ")";
 
-            // следующий код нужен для того, чтоб в случае если у нас котируемая
-            // валюта не является USDT - отобразить профит в пересчете к USDT.
-            std::string pair = it.first;
-            pair += "USDT";
-            auto is_valid_pair = it.first == "USDT" ? false : exinfo.is_valid_symbol(pair);
-            if ( is_valid_pair ) {
-                const auto &price = prices.v.get_by_symbol(pair);
-                auto total = it.second.profit * price.price;
-                os << " (" << total << " USDT)";
-            }
-            os << std::endl;
-        }
-    }
-}
+//             // следующий код нужен для того, чтоб в случае если у нас котируемая
+//             // валюта не является USDT - отобразить профит в пересчете к USDT.
+//             std::string pair = it.first;
+//             pair += "USDT";
+//             auto is_valid_pair = it.first == "USDT" ? false : exinfo.is_valid_symbol(pair);
+//             if ( is_valid_pair ) {
+//                 const auto &price = prices.v.get_by_symbol(pair);
+//                 auto total = it.second.profit * price.price;
+//                 os << " (" << total << " USDT)";
+//             }
+//             os << std::endl;
+//         }
+//     }
+// }
 
-void make_trades_report_for_last_day(
-     std::ostream &os
-    ,rest::api &api
-    ,const rest::account_info_t &accinfo
-    ,const rest::exchange_info_t &exinfo
-    ,const std::vector<std::string> &pairs
-    ,const std::function<void(const rest::order_info_t &)> &tick)
-{
-    auto now = static_cast<std::uint64_t>(std::time(nullptr));
-    auto mtime = now - 24*60*60;
-    mtime *= 1000;
+// void make_trades_report_for_last_day(
+//      std::ostream &os
+//     ,rest::api &api
+//     ,const rest::account_info_t &accinfo
+//     ,const rest::exchange_info_t &exinfo
+//     ,const std::vector<std::string> &pairs
+//     ,const std::function<void(const rest::order_info_t &)> &tick)
+// {
+//     auto now = static_cast<std::uint64_t>(std::time(nullptr));
+//     auto mtime = now - 24*60*60;
+//     mtime *= 1000;
 
-    return make_trades_report(os, api, accinfo, exinfo, pairs, tick, mtime);
-}
+//     return make_trades_report(os, api, accinfo, exinfo, pairs, tick, mtime);
+// }
 
 /*************************************************************************************************/
 /*************************************************************************************************/
@@ -532,22 +532,22 @@ void make_open_orders_report(
 
 /*************************************************************************************************/
 
-void make_balance_report(
-    std::ostream &os
-    ,rest::api &api
-    ,const rest::account_info_t &accinfo
-    ,const rest::exchange_info_t &exinfo)
-{
-    (void)api;
-    (void)exinfo;
+// void make_balance_report(
+//     std::ostream &os
+//     ,rest::api &api
+//     ,const rest::account_info_t &accinfo
+//     ,const rest::exchange_info_t &exinfo)
+// {
+//     (void)api;
+//     (void)exinfo;
 
-    for ( const auto &it: accinfo.balances ) {
-        if ( it.second.free ) {
-            os << boost::format("%-10s: ") % it.first;
-            os << it.second.free << std::endl;
-        }
-    }
-}
+//     for ( const auto &it: accinfo.balances ) {
+//         if ( it.second.free ) {
+//             os << boost::format("%-10s: ") % it.first;
+//             os << it.second.free << std::endl;
+//         }
+//     }
+// }
 
 /*************************************************************************************************/
 /*************************************************************************************************/

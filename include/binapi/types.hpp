@@ -117,36 +117,86 @@ struct _24hrs_tickers_t {
 
 // https://github.com/binance-exchange/binance-official-api-docs/blob/master/rest-api.md#account-information-user_data
 struct account_info_t {
-    std::size_t makerCommission;
-    std::size_t takerCommission;
-    std::size_t buyerCommission;
-    std::size_t sellerCommission;
+    // std::size_t makerCommission;
+    // std::size_t takerCommission;
+    // std::size_t buyerCommission;
+    // std::size_t sellerCommission;
+    std::size_t feeTier;
     bool canTrade;
     bool canWithdraw;
     bool canDeposit;
     std::size_t updateTime;
+    bool multiAssetsMargin;
+    double_type totalInitialMargin;
+    double_type totalMaintMargin;
+    double_type totalWalletBalance;
+    double_type totalUnrealizedProfit;
+    double_type totalMarginBalance;
+    double_type totalPositionInitialMargin;
+    double_type totalOpenOrderInitialMargin;
+    double_type totalCrossWalletBalance;
+    double_type totalCrossUnPnl;
+    double_type availableBalance;
+    double_type maxWithdrawAmount;
 
-    struct balance_t {
+    struct asset_t {
         std::string asset;
-        double_type free;
-        double_type locked;
+        // double_type free;
+        // double_type locked;
+        double_type walletBalance;
+        double_type unrealizedProfit;
+        double_type marginBalance;
+        double_type maintMargin;
+        double_type initialMargin;
+        double_type positionInitialMargin;
+        double_type openOrderInitialMargin;
+        double_type crossWalletBalance;
+        double_type crossUnPnl;
+        double_type availableBalance;
+        double_type maxWithdrawAmount;
+        bool marginAvailable;
+        std::size_t updateTime;
 
-        static balance_t construct(const flatjson::fjson &json);
-        friend std::ostream &operator<<(std::ostream &os, const balance_t &f);
+        static asset_t construct(const flatjson::fjson &json);
+        friend std::ostream &operator<<(std::ostream &os, const asset_t &f);
     };
-    std::map<std::string, balance_t> balances;
 
-    const balance_t& get_balance(const std::string &symbol) const
-        { return get_balance(symbol.c_str()); }
-    const balance_t& get_balance(const char *symbol) const;
+    std::map<std::string, asset_t> assets;
 
-    const double_type& add_balance(const std::string &symbol, const double_type &amount)
-    { return add_balance(symbol.c_str(), amount); }
-    const double_type& add_balance(const char *symbol, const double_type &amount);
+    struct position_t {
+        std::string symbol;
+        double_type initialMargin;
+        double_type maintMargin;
+        double_type unrealizedProfit;
+        double_type positionInitialMargin;
+        double_type openOrderInitialMargin;
+        double_type leverage;
+        bool isolated;
+        double_type entryPrice;
+        double_type maxNotional;
+        double_type bidNotional;
+        double_type askNotional;
+        std::string positionSide;
+        double_type positionAmt;
+        std::size_t updateTime;
 
-    const double_type& sub_balance(const std::string &symbol, const double_type &amount)
-    { return sub_balance(symbol.c_str(), amount); }
-    const double_type& sub_balance(const char *symbol, const double_type &amount);
+        static position_t construct(const flatjson::fjson &json);
+        friend std::ostream &operator<<(std::ostream &os, const position_t &f);
+    };
+
+    std::map<std::string, position_t> positions;
+
+    // const asset_t& get_asset(const std::string &symbol) const
+    //     { return get_asset(symbol.c_str()); }
+    // const asset_t& get_asset(const char *symbol) const;
+
+    // const double_type& add_asset(const std::string &symbol, const double_type &amount)
+    // { return add_asset(symbol.c_str(), amount); }
+    // const double_type& add_asset(const char *symbol, const double_type &amount);
+
+    // const double_type& sub_asset(const std::string &symbol, const double_type &amount)
+    // { return sub_asset(symbol.c_str(), amount); }
+    // const double_type& sub_asset(const char *symbol, const double_type &amount);
 
     static account_info_t construct(const flatjson::fjson &json);
     friend std::ostream &operator<<(std::ostream &os, const account_info_t &f);

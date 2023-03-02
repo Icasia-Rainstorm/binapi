@@ -113,19 +113,19 @@ int main(int argc, char **argv) {
 //     }
     /** */
 
-    // auto account = api.account_info();
-    // if ( ! binapi::rest::e_error_equal(account.ec, binapi::rest::e_error::OK) ) {
-    //     std::cout
-    //     << "account_error: ec=" << account.ec
-    //     << ", ename=" << binapi::rest::e_error_to_string(account.ec)
-    //     << ", emsg=" << account.errmsg
-    //     << std::endl << std::endl;
+    auto account = api.account_info();
+    if ( ! binapi::rest::e_error_equal(account.ec, binapi::rest::e_error::OK) ) {
+        std::cout
+        << "account_error: ec=" << account.ec
+        << ", ename=" << binapi::rest::e_error_to_string(account.ec)
+        << ", emsg=" << account.errmsg
+        << std::endl << std::endl;
 
-    //     return EXIT_FAILURE;
-    // } else {
-    //     BREAK_IF_ERROR(account);
-    //     std::cout << "account=" << account.v << std::endl << std::endl;
-    // }
+        return EXIT_FAILURE;
+    } else {
+        BREAK_IF_ERROR(account);
+        std::cout << "account=" << account.v << std::endl << std::endl;
+    }
 
     auto exinfo = api.exchange_info();
     BREAK_IF_ERROR(exinfo);

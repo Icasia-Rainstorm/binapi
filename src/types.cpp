@@ -300,10 +300,10 @@ account_info_t account_info_t::construct(const flatjson::fjson &json) {
     assert(json.is_valid());
 
     account_info_t res{};
-    __BINAPI_GET(makerCommission);
-    __BINAPI_GET(takerCommission);
-    __BINAPI_GET(buyerCommission);
-    __BINAPI_GET(sellerCommission);
+    // __BINAPI_GET(makerCommission);
+    // __BINAPI_GET(takerCommission);
+    // __BINAPI_GET(buyerCommission);
+    // __BINAPI_GET(sellerCommission);
     __BINAPI_GET(canTrade);
     __BINAPI_GET(canWithdraw);
     __BINAPI_GET(canDeposit);
@@ -356,10 +356,10 @@ const double_type& account_info_t::sub_balance(const char *symbol, const double_
 std::ostream &operator<<(std::ostream &os, const account_info_t &o) {
     os
     << "{"
-    << "\"makerCommission\":" << o.makerCommission << ","
-    << "\"takerCommission\":" << o.takerCommission << ","
-    << "\"buyerCommission\":" << o.buyerCommission << ","
-    << "\"sellerCommission\":" << o.sellerCommission << ","
+    // << "\"makerCommission\":" << o.makerCommission << ","
+    // << "\"takerCommission\":" << o.takerCommission << ","
+    // << "\"buyerCommission\":" << o.buyerCommission << ","
+    // << "\"sellerCommission\":" << o.sellerCommission << ","
     << "\"canTrade\":" << (o.canTrade ? "true" : "false") << ","
     << "\"canWithdraw\":" << (o.canWithdraw ? "true" : "false") << ","
     << "\"canDeposit\":" << (o.canDeposit ? "true" : "false") << ","
@@ -408,7 +408,8 @@ std::ostream &operator<<(std::ostream &os, const exchange_info_t::symbol_t::filt
     << "\"filterType\":\"PERCENT_PRICE\","
     << "\"multiplierUp\":\"" << o.multiplierUp << "\","
     << "\"multiplierDown\":\"" << o.multiplierDown << "\","
-    << "\"avgPriceMins\":" << o.avgPriceMins << ""
+    << "\"multiplierDecimal\":\"" << o.multiplierDecimal << "\","
+    //<< "\"avgPriceMins\":" << o.avgPriceMins << ""
     << "}";
 
     return os;
@@ -456,7 +457,8 @@ std::ostream &operator<<(std::ostream &os, const exchange_info_t::symbol_t::filt
     os
     << "{"
     << "\"filterType\":\"MIN_NOTIONAL\","
-    << "\"minNotional\":\"" << o.minNotional << "\""
+    << "\"notional\":" << o.notional
+    //<< "\"minNotional\":\"" << o.minNotional << "\""
     << "}";
 
     return os;
@@ -476,7 +478,8 @@ std::ostream &operator<<(std::ostream &os, const exchange_info_t::symbol_t::filt
     os
     << "{"
     << "\"filterType\":\"MAX_NUM_ORDERS\","
-    << "\"maxNumOrders\":" << o.maxNumOrders
+    << "\"limit\":" << o.limit
+    //<< "\"maxNumOrders\":" << o.maxNumOrders
     << "}";
 
     return os;
@@ -486,7 +489,8 @@ std::ostream &operator<<(std::ostream &os, const exchange_info_t::symbol_t::filt
     os
     << "{"
     << "\"filterType\":\"MAX_NUM_ALGO_ORDERS\","
-    << "\"maxNumAlgoOrders\":" << o.maxNumAlgoOrders
+    << "\"limit\":" << o.limit
+    //<< "\"maxNumAlgoOrders\":" << o.maxNumAlgoOrders
     << "}";
 
     return os;
@@ -540,7 +544,7 @@ std::ostream &operator<<(std::ostream &os, const exchange_info_t::symbol_t &o) {
     }
     os
     << "],"
-    << "\"icebergAllowed\":" << (o.icebergAllowed ? "true" : "false") << ","
+    //<< "\"icebergAllowed\":" << (o.icebergAllowed ? "true" : "false") << ","
     << "\"filters\":[";
     for ( auto it = o.filters.begin(); it != o.filters.end(); ++it ) {
         os << *it;
@@ -606,7 +610,7 @@ exchange_info_t exchange_info_t::construct(const flatjson::fjson &json) {
         __BINAPI_GET2(sym, baseAssetPrecision, sit);
         __BINAPI_GET2(sym, quoteAsset, sit);
         __BINAPI_GET2(sym, quotePrecision, sit);
-        __BINAPI_GET2(sym, icebergAllowed, sit);
+        //__BINAPI_GET2(sym, icebergAllowed, sit);
         const auto types = sit.at("orderTypes");
         assert(types.is_array());
         for ( auto idx2 = 0u; idx2 < types.size(); ++idx2 ) {
@@ -636,7 +640,8 @@ exchange_info_t exchange_info_t::construct(const flatjson::fjson &json) {
                     exchange_info_t::symbol_t::filter_t::percent_price_t item{};
                     __BINAPI_GET2(item, multiplierUp, fit);
                     __BINAPI_GET2(item, multiplierDown, fit);
-                    __BINAPI_GET2(item, avgPriceMins, fit);
+                    __BINAPI_GET2(item, multiplierDecimal, fit);
+                    //__BINAPI_GET2(item, avgPriceMins, fit);
                     filter.filter = std::move(item);
 
                     break;
@@ -672,7 +677,8 @@ exchange_info_t exchange_info_t::construct(const flatjson::fjson &json) {
                 }
                 case fnv1a("MIN_NOTIONAL"): {
                     exchange_info_t::symbol_t::filter_t::min_notional_t item{};
-                    __BINAPI_GET2(item, minNotional, fit);
+                    __BINAPI_GET2(item, notional, fit);
+                    //__BINAPI_GET2(item, minNotional, fit);
                     filter.filter = std::move(item);
 
                     break;
@@ -686,14 +692,16 @@ exchange_info_t exchange_info_t::construct(const flatjson::fjson &json) {
                 }
                 case fnv1a("MAX_NUM_ORDERS"): {
                     exchange_info_t::symbol_t::filter_t::max_num_orders_t item{};
-                    __BINAPI_GET2(item, maxNumOrders, fit);
+                    __BINAPI_GET2(item, limit, fit);
+                    //__BINAPI_GET2(item, maxNumOrders, fit);
                     filter.filter = std::move(item);
 
                     break;
                 }
                 case fnv1a("MAX_NUM_ALGO_ORDERS"): {
                     exchange_info_t::symbol_t::filter_t::max_num_algo_orders_t item{};
-                    __BINAPI_GET2(item, maxNumAlgoOrders, fit);
+                    __BINAPI_GET2(item, limit, fit);
+                    //__BINAPI_GET2(item, maxNumAlgoOrders, fit);
                     filter.filter = std::move(item);
 
                     break;

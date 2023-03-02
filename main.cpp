@@ -75,60 +75,60 @@ int main(int argc, char **argv) {
     static const char *testpair = "BTCUSDT";
 
     /** */
-    {
-        const std::string accinfo_str = read_file("accinfo.json");
-        const std::string exinfo_str = read_file("exinfo.json");
+//     {
+//         const std::string accinfo_str = read_file("accinfo.json");
+//         const std::string exinfo_str = read_file("exinfo.json");
 
-        const flatjson::fjson exinfo_json{exinfo_str.c_str(), exinfo_str.size()};
-        binapi::rest::exchange_info_t exinfo = binapi::rest::exchange_info_t::construct(exinfo_json);
+//         const flatjson::fjson exinfo_json{exinfo_str.c_str(), exinfo_str.size()};
+//         binapi::rest::exchange_info_t exinfo = binapi::rest::exchange_info_t::construct(exinfo_json);
 
-        const flatjson::fjson accinfo_json{accinfo_str.c_str(), accinfo_str.size()};
-        binapi::rest::account_info_t accinfo = binapi::rest::account_info_t::construct(accinfo_json);
+//         const flatjson::fjson accinfo_json{accinfo_str.c_str(), accinfo_str.size()};
+//         binapi::rest::account_info_t accinfo = binapi::rest::account_info_t::construct(accinfo_json);
 
-        auto pairs0 = binapi::process_pairs("BTCUSDT", "", exinfo);
-        assert(pairs0.size() == 1 && *(pairs0.begin()) == "BTCUSDT");
+//         auto pairs0 = binapi::process_pairs("BTCUSDT", "", exinfo);
+//         assert(pairs0.size() == 1 && *(pairs0.begin()) == "BTCUSDT");
 
-        auto pairs1 = binapi::process_pairs("BTCUSDT,BNBUSDT", "BTCUSDT", exinfo);
-        assert(pairs1.size() == 1 && *(pairs1.begin()) == "BNBUSDT");
+//         auto pairs1 = binapi::process_pairs("BTCUSDT,BNBUSDT", "BTCUSDT", exinfo);
+//         assert(pairs1.size() == 1 && *(pairs1.begin()) == "BNBUSDT");
 
-        auto pairs2 = binapi::process_pairs("*USDT", "BTCUSDT,BNBUSDT", exinfo);
-        assert(pairs2.size() == 156 && pairs2.count("BTCUSDT") == 0 && pairs2.count("BNBUSDT") == 0);
+//         auto pairs2 = binapi::process_pairs("*USDT", "BTCUSDT,BNBUSDT", exinfo);
+//         assert(pairs2.size() == 156 && pairs2.count("BTCUSDT") == 0 && pairs2.count("BNBUSDT") == 0);
 
-        static const auto trades_report_cb = [](const binapi::rest::order_info_t &o){
-            std::cout << o.symbol << " - " << o.orderId << std::endl;
-        };
-        std::cout << "******************** BALANCE REPORT *********************************" << std::endl;
-        binapi::make_balance_report(std::cout, api, accinfo, exinfo);
-        std::cout << std::endl;
-        std::cout << "********************* TRADES REPORT *********************************" << std::endl;
-//        binapi::make_trades_report(std::cout, api, accinfo, exinfo, {"ETHUSDT"}, trades_report_cb);
-//        binapi::make_trades_report(std::cout, api, accinfo, exinfo, {"*USDT"}, trades_report_cb); // "2018-11-12 17:38:29"
-//        binapi::make_trades_report_for_last_day(std::cout, api, accinfo, exinfo, {"ETHUSDT"}, trades_report_cb);
+//         static const auto trades_report_cb = [](const binapi::rest::order_info_t &o){
+//             std::cout << o.symbol << " - " << o.orderId << std::endl;
+//         };
+//         std::cout << "******************** BALANCE REPORT *********************************" << std::endl;
+//         binapi::make_balance_report(std::cout, api, accinfo, exinfo);
+//         std::cout << std::endl;
+//         std::cout << "********************* TRADES REPORT *********************************" << std::endl;
+// //        binapi::make_trades_report(std::cout, api, accinfo, exinfo, {"BTCUSDT"}, trades_report_cb);
+// //        binapi::make_trades_report(std::cout, api, accinfo, exinfo, {"*USDT"}, trades_report_cb); // "2018-11-12 17:38:29"
+// //        binapi::make_trades_report_for_last_day(std::cout, api, accinfo, exinfo, {"ETHUSDT"}, trades_report_cb);
 
-        std::cout << std::endl;
-        std::cout << "******************* OPEN ORDERS REPORT ******************************" << std::endl;
-//        binapi::make_open_orders_report(std::cout, api, exinfo, {});
+//         std::cout << std::endl;
+//         std::cout << "******************* OPEN ORDERS REPORT ******************************" << std::endl;
+// //        binapi::make_open_orders_report(std::cout, api, exinfo, {});
 
-        std::cout << std::endl;
-    }
+//         std::cout << std::endl;
+//     }
     /** */
 
-    auto account = api.account_info();
-    if ( ! binapi::rest::e_error_equal(account.ec, binapi::rest::e_error::OK) ) {
-        std::cout
-        << "account_error: ec=" << account.ec
-        << ", ename=" << binapi::rest::e_error_to_string(account.ec)
-        << ", emsg=" << account.errmsg
-        << std::endl << std::endl;
+    // auto account = api.account_info();
+    // if ( ! binapi::rest::e_error_equal(account.ec, binapi::rest::e_error::OK) ) {
+    //     std::cout
+    //     << "account_error: ec=" << account.ec
+    //     << ", ename=" << binapi::rest::e_error_to_string(account.ec)
+    //     << ", emsg=" << account.errmsg
+    //     << std::endl << std::endl;
 
-        return EXIT_FAILURE;
-    } else {
-        //BREAK_IF_ERROR(account);
-        std::cout << "account=" << account.v << std::endl << std::endl;
-    }
+    //     return EXIT_FAILURE;
+    // } else {
+    //     BREAK_IF_ERROR(account);
+    //     std::cout << "account=" << account.v << std::endl << std::endl;
+    // }
 
     auto exinfo = api.exchange_info();
-    //BREAK_IF_ERROR(exinfo);
+    BREAK_IF_ERROR(exinfo);
     std::cout << "exinfo=" << exinfo.v << std::endl << std::endl;
 
     auto ping = api.ping();

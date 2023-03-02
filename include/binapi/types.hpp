@@ -175,7 +175,7 @@ struct exchange_info_t {
         std::string quoteAsset;
         std::size_t quotePrecision;
         std::vector<std::string> orderTypes;
-        bool icebergAllowed;
+        //bool icebergAllowed;
 
         struct filter_t {
             struct price_t {
@@ -188,7 +188,8 @@ struct exchange_info_t {
             struct percent_price_t {
                 double_type multiplierUp;
                 double_type multiplierDown;
-                std::size_t avgPriceMins;
+                std::size_t multiplierDecimal;
+                //std::size_t avgPriceMins;
 
                 friend std::ostream &operator<<(std::ostream &os, const percent_price_t &f);
             };
@@ -214,7 +215,8 @@ struct exchange_info_t {
                 friend std::ostream &operator<<(std::ostream &os, const market_lot_size_t &f);
             };
             struct min_notional_t {
-                double_type minNotional;
+                std::size_t notional;
+                //double_type minNotional;
 
                 friend std::ostream &operator<<(std::ostream &os, const min_notional_t &f);
             };
@@ -224,13 +226,15 @@ struct exchange_info_t {
                 friend std::ostream &operator<<(std::ostream &os, const iceberg_parts_t &f);
             };
             struct max_num_orders_t {
-                std::size_t maxNumOrders;
+                std::size_t limit;
+                //std::size_t maxNumOrders;              
 
                 friend std::ostream &operator<<(std::ostream &os, const max_num_orders_t &f);
             };
 
             struct max_num_algo_orders_t {
-                std::size_t maxNumAlgoOrders;
+                std::size_t limit;
+                //std::size_t maxNumAlgoOrders;
 
                 friend std::ostream &operator<<(std::ostream &os, const max_num_algo_orders_t &f);
             };

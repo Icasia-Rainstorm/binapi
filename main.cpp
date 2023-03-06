@@ -20,6 +20,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <time.h>
+#include <chrono>  
 #include <binapi/errors.hpp>
 
 /*************************************************************************************************/
@@ -34,6 +36,15 @@ std::string read_file(const char *fname) {
     };
 
     return res;
+}
+
+/*************************************************************************************************/
+
+std::time_t getTimeStamp()
+{
+    std::chrono::time_point<std::chrono::system_clock,std::chrono::milliseconds> tp = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now());//获取当前时间点
+    std::time_t timestamp =  tp.time_since_epoch().count(); //计算距离1970-1-1,00:00的时间长度
+    return timestamp;
 }
 
 /*************************************************************************************************/
@@ -54,7 +65,7 @@ std::string read_file(const char *fname) {
 /*************************************************************************************************/
 
 int main(int argc, char **argv) {
-    assert(argc == 3);
+    assert(argc == 3 || argc == 4);
     const std::string pk = argv[1];
     const std::string sk = argv[2];
 
@@ -71,8 +82,11 @@ int main(int argc, char **argv) {
         ,sk
         ,10000
     );
-
-    static const char *testpair = "BTCUSDT";
+    
+    static const char *testpair;
+    if (argc == 3)  testpair = "BTCUSDT";
+    else if (argc == 4) testpair = argv[3];
+    
 
     /** */
 //     {
@@ -246,7 +260,7 @@ int main(int argc, char **argv) {
                 return false;
             }
 
-            std::cout << "depth: " << msg << std::endl;
+            std::cout << "depth: " << msg << getTimeStamp() <<std::endl;
             return true;
         }
     );
@@ -258,7 +272,7 @@ int main(int argc, char **argv) {
                 return false;
             }
 
-            std::cout << "agg_trade: " << msg << std::endl;
+            std::cout << "agg_trade: " << msg << getTimeStamp() << std::endl;
             return true;
         }
     );

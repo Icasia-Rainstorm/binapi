@@ -1,3 +1,7 @@
 binapi
 res.txt
 CMakeCache.txt
+accinfo.json
+exinfo.json
+nohup.out
+result/

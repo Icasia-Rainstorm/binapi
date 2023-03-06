@@ -12,10 +12,21 @@
 #include <binapi/types.hpp>
 #include <binapi/flatjson.hpp>
 #include <binapi/fnv1a.hpp>
-
 #include <type_traits>
-
+#include <time.h>
+#include <chrono>  
 //#include <iostream> // TODO: comment out
+
+/*************************************************************************************************/
+
+std::time_t getTimeStamp()
+{
+    std::chrono::time_point<std::chrono::system_clock,std::chrono::milliseconds> tp = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now());//获取当前时间点
+    std::time_t timestamp =  tp.time_since_epoch().count(); //计算距离1970-1-1,00:00的时间长度
+    return timestamp;
+}
+
+/*************************************************************************************************/
 
 namespace binapi {
 
@@ -1675,6 +1686,7 @@ agg_trade_t agg_trade_t::construct(const flatjson::fjson &json) {
     __BINAPI_GET(f);
     __BINAPI_GET(l);
     __BINAPI_GET(T);
+    res.LT = getTimeStamp();
     __BINAPI_GET(m);
     //__BINAPI_GET(M);
 
@@ -1693,6 +1705,7 @@ std::ostream &operator<<(std::ostream &os, const agg_trade_t &o) {
     << "\"f\":" << o.f << ","
     << "\"l\":" << o.l << ","
     << "\"T\":" << o.T << ","
+    << "\"LT\":" << o.LT << ","
     << "\"m\":" << (o.m ? "true" : "false") << "}";
     //<< "\"M\":" << (o.M ? "true" : "false")
     //<< "}";
@@ -1813,6 +1826,7 @@ diff_depths_t diff_depths_t::construct(const flatjson::fjson &json) {
     __BINAPI_GET(s);
     __BINAPI_GET(u);
     __BINAPI_GET(U);
+    res.LT = getTimeStamp();
     const auto a = json.at("a");
     for ( auto idx = 0u; idx < a.size(); ++idx ) {
         diff_depths_t::depth_t item{};
@@ -1842,6 +1856,7 @@ std::ostream& operator<<(std::ostream &os, const diff_depths_t &o) {
     << "\"s\":\"" << o.s << "\","
     << "\"u\":" << o.u << ","
     << "\"U\":" << o.U << ","
+    << "\"LT\":" << o.LT << ","
     << "\"a\":[";
     for ( auto it = o.a.begin(); it != o.a.end(); ++it ) {
         os << "[\"" << it->price << "\", \"" << it->amount << "\"]";

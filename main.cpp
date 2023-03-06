@@ -40,15 +40,6 @@ std::string read_file(const char *fname) {
 
 /*************************************************************************************************/
 
-std::time_t getTimeStamp()
-{
-    std::chrono::time_point<std::chrono::system_clock,std::chrono::milliseconds> tp = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now());//获取当前时间点
-    std::time_t timestamp =  tp.time_since_epoch().count(); //计算距离1970-1-1,00:00的时间长度
-    return timestamp;
-}
-
-/*************************************************************************************************/
-
 #define PRINT_IF_ERROR(res) \
     if ( !static_cast<bool>(res) ) { \
         std::cout << __FILE__ << "(" << __LINE__ << "): msg=" << res.errmsg << std::endl; \
@@ -260,7 +251,7 @@ int main(int argc, char **argv) {
                 return false;
             }
 
-            std::cout << "depth: " << msg << getTimeStamp() <<std::endl;
+            std::cout << "depth: " << msg << std::endl;
             return true;
         }
     );
@@ -272,7 +263,7 @@ int main(int argc, char **argv) {
                 return false;
             }
 
-            std::cout << "agg_trade: " << msg << getTimeStamp() << std::endl;
+            std::cout << "agg_trade: " << msg << std::endl;
             return true;
         }
     );

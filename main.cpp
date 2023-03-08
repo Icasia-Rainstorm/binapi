@@ -22,6 +22,8 @@
 #include <fstream>
 #include <time.h>
 #include <chrono>  
+#include <stdio.h>
+#include <string.h>
 #include <binapi/errors.hpp>
 
 /*************************************************************************************************/
@@ -45,6 +47,16 @@ std::time_t getTimeStamp1()
     std::chrono::time_point<std::chrono::system_clock,std::chrono::milliseconds> tp = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now());//获取当前时间点
     std::time_t timestamp =  tp.time_since_epoch().count(); //计算距离1970-1-1,00:00的时间长度
     return timestamp;
+}
+
+/*************************************************************************************************/
+
+char* getFileName(const char* symbol, const char* op, char* path) {
+    std::string Symbol(symbol), Op(op), Path(path);
+    std::string temp = Path + Symbol + "_" + Op;
+    char* filename = new char[temp.size()+1];
+    strcpy(filename, temp.c_str());
+    return filename;
 }
 
 /*************************************************************************************************/
@@ -87,7 +99,7 @@ int main(int argc, char **argv) {
     if (argc == 3)  testpair = "BTCUSDT";
     else if (argc == 4) testpair = argv[3];
     
-    std::set<const char*> testset {"BTCUSDT", "BNBUSDT"};
+    std::set<const char*> testset {"BTCUSDT", "BNBUSDT", "ETHUSDT", "BCHUSDT", "XRPUSDT", "EOSUSDT", "LTCUSDT", "TRXUSDT", "ETHUSDT", "BCHUSDT", "XRPUSDT"};
 
     /** */
 //     {
@@ -253,29 +265,35 @@ int main(int argc, char **argv) {
             std::cout << "order update:\n" << msg << std::endl;
             return true;
         }
-    );
-
+    );  
+     
     for (auto it = testset.begin(); it != testset.end(); ++it) {
         wsp.diff_depth(*it, binapi::e_freq::_100ms,
-            [](const char *fl, int ec, std::string errmsg, binapi::ws::diff_depths_t msg) -> bool {
+            [it](const char *fl, int ec, std::string errmsg, binapi::ws::diff_depths_t msg) -> bool {
                 if ( ec ) {
                     std::cout << "subscribe_depth(): fl=" << fl << ", ec=" << ec << ", errmsg: " << errmsg << ", msg: " << msg << std::endl;
                     return false;
                 }
-
-                std::cout << "depth: " << msg << std::endl;
+                char* filename = getFileName(*it, "depth", "./result/");
+                //std::cout << filename << std::endl;
+                std::ofstream oFile;
+                oFile.open(filename, std::ios::app);
+                oFile << "depth: " << msg << getTimeStamp1()<< std::endl;
                 return true;
             }
         );
         wsp.agg_trade(*it,
-            [](const char *fl, int ec, std::string errmsg, binapi::ws::agg_trade_t msg) -> bool {
+            [it](const char *fl, int ec, std::string errmsg, binapi::ws::agg_trade_t msg) -> bool {
                 if ( ec ) {
                     //std::cout << "here" << std::endl;
                     std::cout << "subscribe_agg_trade(): fl=" << fl << ", ec=" << ec << ", errmsg: " << errmsg << ", msg: " << msg << std::endl;
                     return false;
                 }
-
-                std::cout << "agg_trade: " << msg << std::endl;
+                char* filename = getFileName(*it, "aggTrade", "./result/");
+                //std::cout << filename << std::endl;
+                std::ofstream oFile;
+                oFile.open(filename, std::ios::app);
+                oFile << "agg_trade: " << msg << getTimeStamp1() << std::endl;
                 return true;
             }
         );

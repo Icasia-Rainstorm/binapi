@@ -51,9 +51,21 @@ std::time_t getTimeStamp1()
 
 /*************************************************************************************************/
 
-char* getFileName(const char* symbol, const char* op, const char* path) {
+std::string convertTimeStamp2TimeStr(std::time_t timeStamp){
+    timeStamp = int(timeStamp/1000);
+    struct tm *timeinfo = nullptr;
+    char buffer[80];
+    timeinfo = localtime(&timeStamp);
+    strftime(buffer,80,"%Y-%m-%d_%H:%M:%S",timeinfo);
+    printf("%s\n",buffer);
+    return std::string(buffer);
+}
+
+/*************************************************************************************************/
+
+char* getFileName(const char* symbol, const char* op, const char* path, std::string time) {
     std::string Symbol(symbol), Op(op), Path(path);
-    std::string temp = Path + Symbol + "_" + Op;
+    std::string temp = Path + Symbol + "_" + Op + "_" + time + ".h5";
     char* filename = new char[temp.size()+1];
     strcpy(filename, temp.c_str());
     return filename;
@@ -99,8 +111,8 @@ int main(int argc, char **argv) {
     if (argc == 3)  testpair = "BTCUSDT";
     else if (argc == 4) testpair = argv[3];
     
-    std::set<const char*> testset {"BTCUSDT", "BNBUSDT", "ETHUSDT", "BCHUSDT", "XRPUSDT", "EOSUSDT", "LTCUSDT", "TRXUSDT", "ETHUSDT", "BCHUSDT", "XRPUSDT"};
-
+    //std::set<const char*> testset {"BTCUSDT", "BNBUSDT", "ETHUSDT", "BCHUSDT", "XRPUSDT", "EOSUSDT", "LTCUSDT", "TRXUSDT", "ETHUSDT", "BCHUSDT", "XRPUSDT"};
+    std::set<const char*> testset {"BTCUSDT"};
     /** */
 //     {
 //         const std::string accinfo_str = read_file("accinfo.json");
@@ -267,33 +279,51 @@ int main(int argc, char **argv) {
         }
     );  
 
+
+    std::string time = convertTimeStamp2TimeStr(getTimeStamp1());
+    std::cout << time << std::endl;
+
     for (auto it = testset.begin(); it != testset.end(); ++it) {
         wsp.diff_depth(*it, binapi::e_freq::_100ms,
-            [it](const char *fl, int ec, std::string errmsg, binapi::ws::diff_depths_t msg) -> bool {
+            [it, time](const char *fl, int ec, std::string errmsg, binapi::ws::diff_depths_t msg) -> bool {
                 if ( ec ) {
                     std::cout << "subscribe_depth(): fl=" << fl << ", ec=" << ec << ", errmsg: " << errmsg << ", msg: " << msg << std::endl;
                     return false;
                 }
-                char* filename = getFileName(*it, "depth", "./result/");
+                char* filename = getFileName(*it, "depth", "./result/", time);
                 //std::cout << filename << std::endl;
-                std::ofstream oFile;
-                oFile.open(filename, std::ios::app);
+                std::fstream oFile;
+                oFile.open(filename, std::ios::app|std::ios::out);
+
+                if(oFile) std::cout << "succeed!" << std::endl;
+                else {
+                    std::cout << "fail!" << std::endl;
+                }
+                
                 oFile << "depth: " << msg << std::endl;
+                oFile.close();
                 return true;
             }
         );
         wsp.agg_trade(*it,
-            [it](const char *fl, int ec, std::string errmsg, binapi::ws::agg_trade_t msg) -> bool {
+            [it, time](const char *fl, int ec, std::string errmsg, binapi::ws::agg_trade_t msg) -> bool {
                 if ( ec ) {
                     //std::cout << "here" << std::endl;
                     std::cout << "subscribe_agg_trade(): fl=" << fl << ", ec=" << ec << ", errmsg: " << errmsg << ", msg: " << msg << std::endl;
                     return false;
                 }
-                char* filename = getFileName(*it, "aggTrade", "./result/");
+                char* filename = getFileName(*it, "aggTrade", "./result/", time);
                 //std::cout << filename << std::endl;
-                std::ofstream oFile;
-                oFile.open(filename, std::ios::app);
+                std::fstream oFile;
+                oFile.open(filename, std::ios::app|std::ios::out);
+
+                if(oFile) std::cout << "succeed!" << std::endl;
+                else {
+                    std::cout << "fail!" << std::endl;
+                }
+
                 oFile << "agg_trade: " << msg << std::endl;
+                oFile.close();
                 return true;
             }
         );

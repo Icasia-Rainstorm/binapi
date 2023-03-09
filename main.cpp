@@ -51,7 +51,7 @@ std::time_t getTimeStamp1()
 
 /*************************************************************************************************/
 
-char* getFileName(const char* symbol, const char* op, char* path) {
+char* getFileName(const char* symbol, const char* op, const char* path) {
     std::string Symbol(symbol), Op(op), Path(path);
     std::string temp = Path + Symbol + "_" + Op;
     char* filename = new char[temp.size()+1];
@@ -266,7 +266,7 @@ int main(int argc, char **argv) {
             return true;
         }
     );  
-     
+
     for (auto it = testset.begin(); it != testset.end(); ++it) {
         wsp.diff_depth(*it, binapi::e_freq::_100ms,
             [it](const char *fl, int ec, std::string errmsg, binapi::ws::diff_depths_t msg) -> bool {
@@ -278,7 +278,7 @@ int main(int argc, char **argv) {
                 //std::cout << filename << std::endl;
                 std::ofstream oFile;
                 oFile.open(filename, std::ios::app);
-                oFile << "depth: " << msg << getTimeStamp1()<< std::endl;
+                oFile << "depth: " << msg << std::endl;
                 return true;
             }
         );
@@ -293,7 +293,7 @@ int main(int argc, char **argv) {
                 //std::cout << filename << std::endl;
                 std::ofstream oFile;
                 oFile.open(filename, std::ios::app);
-                oFile << "agg_trade: " << msg << getTimeStamp1() << std::endl;
+                oFile << "agg_trade: " << msg << std::endl;
                 return true;
             }
         );

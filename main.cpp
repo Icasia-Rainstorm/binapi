@@ -111,8 +111,8 @@ int main(int argc, char **argv) {
     if (argc == 3)  testpair = "BTCUSDT";
     else if (argc == 4) testpair = argv[3];
     
-    //std::set<const char*> testset {"BTCUSDT", "BNBUSDT", "ETHUSDT", "BCHUSDT", "XRPUSDT", "EOSUSDT", "LTCUSDT", "TRXUSDT", "ETHUSDT", "BCHUSDT", "XRPUSDT"};
-    std::set<const char*> testset {"BTCUSDT"};
+    std::set<const char*> testset {"BTCUSDT", "ETHUSDT", "XRPUSDT", "APTUSDT", "MATICUSDT", "SOLUSDT", "OPUSDT", "FILUSDT"};
+    //std::set<const char*> testset {"BTCUSDT"};
     /** */
 //     {
 //         const std::string accinfo_str = read_file("accinfo.json");
@@ -281,7 +281,7 @@ int main(int argc, char **argv) {
 
 
     std::string time = convertTimeStamp2TimeStr(getTimeStamp1());
-    std::cout << time << std::endl;
+    // std::cout << time << std::endl;
 
     for (auto it = testset.begin(); it != testset.end(); ++it) {
         wsp.diff_depth(*it, binapi::e_freq::_100ms,
@@ -295,10 +295,10 @@ int main(int argc, char **argv) {
                 std::fstream oFile;
                 oFile.open(filename, std::ios::app|std::ios::out);
 
-                if(oFile) std::cout << "succeed!" << std::endl;
-                else {
-                    std::cout << "fail!" << std::endl;
-                }
+                // if(oFile) std::cout << "succeed!" << std::endl;
+                // else {
+                //     std::cout << "fail!" << std::endl;
+                // }
                 
                 oFile << "depth: " << msg << std::endl;
                 oFile.close();
@@ -317,10 +317,10 @@ int main(int argc, char **argv) {
                 std::fstream oFile;
                 oFile.open(filename, std::ios::app|std::ios::out);
 
-                if(oFile) std::cout << "succeed!" << std::endl;
-                else {
-                    std::cout << "fail!" << std::endl;
-                }
+                // if(oFile) std::cout << "succeed!" << std::endl;
+                // else {
+                //     std::cout << "fail!" << std::endl;
+                // }
 
                 oFile << "agg_trade: " << msg << std::endl;
                 oFile.close();
@@ -345,9 +345,9 @@ int main(int argc, char **argv) {
     BREAK_IF_ERROR(ping_uds);
     std::cout << "ping_uds=" << ping_uds.v << std::endl << std::endl;
 
-////    auto close_uds = api.close_user_data_stream(start_uds.v.listenKey);
-////    BREAK_IF_ERROR(close_uds);
-////    std::cout << "close_uds=" << close_uds.v << std::endl << std::endl;
+//    auto close_uds = api.close_user_data_stream(start_uds.v.listenKey);
+//    BREAK_IF_ERROR(close_uds);
+//    std::cout << "close_uds=" << close_uds.v << std::endl << std::endl;
 
     ioctx.run();
 

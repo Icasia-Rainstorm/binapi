@@ -3,9 +3,10 @@
 WD=`pwd`
 REGEX="[A-Z]*USDT_[a-zA-Z]*$"
 DIR="result"
-HOURNUM=1
+HOURNUM=5
 for (( i = 0; i <= $HOURNUM-1; i++ ))
 do
     TIME=$(date "+%m-%d-%H:%M:%S")
-	timeout 5s $WD/binapi yCPC1ACscs1lSqLvPd5bs8yaNBAjdVUkgHCE0iMlcjnXKZ0ewvsFZcmhw1QM7XIX 94Io8NUB5cRyfjJqoSunS3obaUqHTOSo44qbr2TCpZ0LNiVRulMf5aI4KACEb7Nv >> $WD/info.txt
+    echo $TIME
+	timeout 1m $WD/binapi yCPC1ACscs1lSqLvPd5bs8yaNBAjdVUkgHCE0iMlcjnXKZ0ewvsFZcmhw1QM7XIX 94Io8NUB5cRyfjJqoSunS3obaUqHTOSo44qbr2TCpZ0LNiVRulMf5aI4KACEb7Nv >> $WD/info.txt
 done
